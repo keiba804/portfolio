@@ -10,33 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_040113) do
-
-  create_table "admins", force: :cascade do |t|
-    t.string "admin_name_kanji"
-    t.string "admin_name_kana"
-    t.string "restaurant_name"
-    t.integer "genre"
-    t.string "restaurant_phone_number"
-    t.string "restaurant_adress"
-    t.string "access"
-    t.string "regular_holiday"
-    t.string "charge"
-    t.string "payment"
-    t.string "introduce_title"
-    t.text "introduce_body"
-    t.integer "restaurant_top_image"
-    t.integer "restaurant_status", default: 0
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 2020_04_25_112652) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -88,6 +62,31 @@ ActiveRecord::Schema.define(version: 2020_04_25_040113) do
     t.integer "restaurant_post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "admin_name_kana"
+    t.string "restaurant_name"
+    t.integer "genre"
+    t.string "restaurant_phone_number"
+    t.string "restaurant_adress"
+    t.string "access"
+    t.string "regular_holiday"
+    t.string "charge"
+    t.string "payment"
+    t.string "introduce_title"
+    t.text "introduce_body"
+    t.integer "restaurant_top_image"
+    t.integer "restaurant_status", default: 0
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_restaurants_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end
 
   create_table "user_post_images", force: :cascade do |t|

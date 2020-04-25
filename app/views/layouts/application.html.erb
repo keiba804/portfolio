@@ -10,6 +10,34 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <nav class="nav navbar-nav navbar-left">
+        <h1 class = "store-name">Portfolio</h1>
+      </nav>
+      <nav>
+        <div class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to ' マイページ', user_user_path(current_user) %></li>
+            <li><%= link_to '', '#' %></li>
+            <li><%= link_to '', '#' %></li>
+            <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
+          <% elsif restaurant_signed_in? %>
+            <li><%= link_to ' メニュー一覧', admin_menus_path %></li>
+            <li><%= link_to ' 投稿一覧', admin_posts_path %></li>
+            <li><%= link_to ' 写真一覧', admin_restaurant_images_path %></li>
+            <li><%= link_to ' ジャンル管理', admin_manu_categories_path %></li>
+            <li><%= link_to ' ログアウト', destroy_restaurant_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to ' このサイトについて', '#' %></li>
+            <li><%= link_to ' 商品一覧', '#' %></li>
+            <li><%= link_to ' ユーザー新規登録', new_user_registration_path %></li>
+            <li><%= link_to ' レストラン新規登録', new_user_registration_path %></li>
+            <li><%= link_to ' ユーザーログイン', user_session_path %></li>
+            <li><%= link_to ' レストランログイン', restaurant_session_path %></li>
+            <% end %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
