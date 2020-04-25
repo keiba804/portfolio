@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_145832) do
+ActiveRecord::Schema.define(version: 2020_04_25_040113) do
 
   create_table "admins", force: :cascade do |t|
     t.string "admin_name_kanji"
@@ -55,17 +55,18 @@ ActiveRecord::Schema.define(version: 2020_04_24_145832) do
 
   create_table "menus", force: :cascade do |t|
     t.integer "menu_category_id"
-    t.string "name"
+    t.string "menu_name"
     t.text "explanation"
     t.integer "price"
     t.integer "takeout"
     t.integer "sales_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "restaurant_id"
+    t.integer "admin_id"
     t.string "title"
     t.text "body"
     t.integer "post_image_id"
