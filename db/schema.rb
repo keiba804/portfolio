@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_112652) do
+ActiveRecord::Schema.define(version: 2020_04_26_051617) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -23,27 +23,6 @@ ActiveRecord::Schema.define(version: 2020_04_25_112652) do
     t.integer "admin_id"
     t.string "menu_category_name"
     t.integer "active_status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menus", force: :cascade do |t|
-    t.integer "menu_category_id"
-    t.string "menu_name"
-    t.text "explanation"
-    t.integer "price"
-    t.integer "takeout"
-    t.integer "sales_status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "admin_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer "admin_id"
-    t.string "title"
-    t.text "body"
-    t.integer "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_112652) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "admin_name_kanji"
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end
