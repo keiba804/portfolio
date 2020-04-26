@@ -1,0 +1,18 @@
+<h2>カテゴリー編集画面</h2>
+
+
+<div class="col-xs-12">
+	<%= form_for @menu_category, url: admin_menu_categories_path, do |f| %>
+		<div class="field">
+			<%= f.label :メニューカテゴリー名　%>
+			<%= f.text_field :menu_category_name %>
+			<%= f.radio_button :active_status , :有効 %>
+			<%= f.label :有効　%>
+			<%= f.radio_button :active_status , :無効 %>
+			<%= f.label :無効　%>
+        </div>
+        <div class="action">
+        	<%= f.submit "変更する", class: "btn btn-md btn-primary" %>
+        </div>
+    <% end %>
+</div>
