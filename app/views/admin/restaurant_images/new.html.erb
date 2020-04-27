@@ -1,0 +1,8 @@
+<h3>画像投稿フォーム</h3>
+
+<%= form_for(@restaurant_image, url: admin_restaurant_images, method: :post) do |f| %>
+	<%= f.attachment_field :image, style: "display:none;", placeholder: "店舗画像" %><br>
+	<%= f.text_area :restaurant_image_title, class:"form-control", placeholder:"タイトル" %><br>
+	<%= f.text_area :restaurant_image_body, class:"form-control", rows:"3", placeholder:"写真説明" %><br>
+	<%= f.submit "投稿" %><br>
+<% end %>

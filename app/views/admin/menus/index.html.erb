@@ -5,17 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>T.integer</th>
-      <th></th>
-      <th>T.string</th>
-      <th></th>
-      <th>T.text</th>
-      <th></th>
-      <th>T.integer</th>
-      <th></th>
-      <th>T.integer</th>
-      <th></th>
-      <th>T.integer</th>
+      <th>menu_category</th>
+      <th>menu_name</th>
+      <th>explanation</th>
+      <th>price</th>
+      <th>takeout</th>
+      <th>sales_status</th>
       <th></th>
       <th colspan="3"></th>
     </tr>
@@ -24,21 +19,14 @@
   <tbody>
     <% @menus.each do |menu| %>
       <tr>
-        <td><%= menu.t.integer %></td>
-        <td><%= menu. %></td>
-        <td><%= menu.t.string %></td>
-        <td><%= menu. %></td>
-        <td><%= menu.t.text %></td>
-        <td><%= menu. %></td>
-        <td><%= menu.t.integer %></td>
-        <td><%= menu. %></td>
-        <td><%= menu.t.integer %></td>
-        <td><%= menu. %></td>
-        <td><%= menu.t.integer %></td>
-        <td><%= menu. %></td>
-        <td><%= link_to 'Show', menu %></td>
-        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= menu.menu_category_name %></td>
+        <td><%= menu.menu_name %></td>
+        <td><%= menu.explanation %></td>
+        <td><%= menu.price %></td>
+        <td><%= menu.takeout %></td>
+        <td><%= menu.sales_status %></td>
+        <td><%= link_to '編集', edit_menu_path(menu) %></td>
+        <td><%= link_to '削除', menu, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -46,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Menu', new_menu_path %>
+<%= link_to 'New Menu', new_admin_menu_path %>

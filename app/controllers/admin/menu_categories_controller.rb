@@ -2,13 +2,14 @@ class Admin::MenuCategoriesController < ApplicationController
 
 	def index
 		@menu_category = MenuCategory.new
-		@menu_categories = MenuCategory.all
+		@menu_categories = current_restaurant.menu_categories
 	end
 
 	def create
-		@menu_category = MenuCategory.new(genre_params)
+		@menu_category = MenuCategory.new(menu_category_params)
+		@menu_category.restaurant_id = current_restaurant.id
 	    if @menu_category.save
-	    	redirect_to request.referer, notice: "ジャンルを作成しました！"
+	    	redirect_to admin_menu_categories_path, notice: "ジャンルを作成しました！"
 	    else
 	    	@menu_categories = MenuCategory.all
 	    	render :index
@@ -34,7 +35,7 @@ class Admin::MenuCategoriesController < ApplicationController
 	private
 
   def menu_category_params
-    params.require(:menu_category).permit(:name, :active_status)
+    params.require(:menu_category).permit(:menu_category_name, :active_status)
   end
 
 end

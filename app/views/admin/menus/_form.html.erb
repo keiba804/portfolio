@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :menu_category_id %>
-    <%= form.text_field  :menu_category_id %>
+    <%= form.label :menu_category %>
+    <%= form.collection_select :menu_category_id, MenuCategory.all, :id, :menu_category_name, {include_blank: "選択してください"} %>
   </div>
 
 
@@ -33,17 +33,24 @@
     <%= form.text_field :price %>
   </div>
 
-  <div class="field">
-    <%= form.label :takeout %>
-    <%= form.text_field :takeout %>
-  </div>
 
   <div class="field">
     <%= form.label :sales_status %>
-    <%= form.text_field :sales_status %>
+    <%= form.label :販売中　%>
+    <%= form.radio_button :sales_status , :販売中 %>
+    <%= form.label :売切　%>
+    <%= form.radio_button :sales_status , :売切 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :takeout %>
+    <%= form.label :○　%>
+    <%= form.radio_button :takeout , :○ %>
+    <%= form.label :✖️ %>
+    <%= form.radio_button :takeout , :✖️ %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "作成", class: "btn btn-md btn-primary" %>
   </div>
 <% end %>

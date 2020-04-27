@@ -4,12 +4,8 @@ class Admin::MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all
-  end
-
-  # GET /menus/1
-  # GET /menus/1.json
-  def show
+    restaurant = current_restaurant
+    @menus = restaurant.menus
   end
 
   # GET /menus/new
@@ -19,12 +15,14 @@ class Admin::MenusController < ApplicationController
 
   # GET /menus/1/edit
   def edit
+    @menu = Menu.find(params[:id])
   end
 
   # POST /menus
   # POST /menus.json
   def create
     @menu = Menu.new(menu_params)
+    @menu.restaurant_id = current_restaurant.id
 
     respond_to do |format|
       if @menu.save
@@ -69,6 +67,6 @@ class Admin::MenusController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_params
-      params.require(:menu).permit(:menu_category_id, :explanation, :takeout, :sales_status)
+      params.require(:menu).permit(:menu_category_id, :explanation, :takeout, :sales_status, :restaurant_id)
     end
 end

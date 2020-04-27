@@ -25,6 +25,7 @@ class Admin::PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.restaurant_id = current_restaurant.id
 
     respond_to do |format|
       if @post.save

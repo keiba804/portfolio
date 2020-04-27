@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-  	get 'admin/top' => 'admins#top'
-  	resources :manu_categories, only: [:index, :create, :edit, :update, :destroy]
-  	resources :menus
+  	get 'restaurant/top' => 'restaurants#top'
+  	resources :menu_categories, only: [:index, :create, :edit, :update, :destroy]
+  	resources :menus, only: [:index, :create, :edit, :update, :destroy, :new]
   	resources :posts
-  	resources :restaurants, only: [:show]
+  	resources :restaurants, only: [:show, :update]
   	resources :restaurant_images
   end
   namespace :customer do
