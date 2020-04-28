@@ -1,0 +1,37 @@
+<h3><%= @restaurant.restaurant_name %> メニュー</h3>
+
+<% @menu_categories.each do |menu_category| %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>メニュー名</th>
+				<th>価格</th>
+				<th>テイクアウト</th>
+				<th>商品説明</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% menu_caregory.menus.each do |menu| %>
+				<tr>
+					<td>
+						<%= menu.menu_name %>
+					</td>
+					<td>
+						<%= menu.price %>
+					</td>
+					<td>
+						<%= menu.takeout %>
+					</td>
+					<td>
+						<%= menu.explanation %>
+					</td>
+					<td>
+						<%= menu.sales_status %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

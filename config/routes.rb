@@ -19,13 +19,20 @@ Rails.application.routes.draw do
   	resources :restaurants, only: [:show, :update]
   	resources :restaurant_images
   end
+
   namespace :customer do
   	resources :restaurants, only: [:index, :show] do
+  		resources :menu_categories, only: [:index]
   		resources :menus, only: [:index]
   		resources :posts, only: [:index, :show]
+  		resources :restaurant_images, only: [:index, :show]
   		resources :user_post_images, only: [:new, :create, :destroy]
   	end
   	resources :users, only: [:show]
+  	post 'follow/:id' => 'relationships#follow', as: 'follow'
+  	post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  	get 'follower_index/:id' => 'relationships#follower_index', as:'follower_index'
+  	get 'users/top' => 'users#top'
   end
   root to: 'tops#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

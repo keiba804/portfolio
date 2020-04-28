@@ -1,0 +1,2 @@
+module Customer::MenuCategoriesHelper
+end

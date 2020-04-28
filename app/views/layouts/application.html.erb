@@ -17,8 +17,8 @@
       <nav>
         <div class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to ' マイページ', user_user_path(current_user) %></li>
-            <li><%= link_to '', '#' %></li>
+            <li><%= link_to ' マイページ', customer_user_path(current_user) %></li>
+            <li><%= link_to ' レストラン一覧', customer_restaurants_path %></li>
             <li><%= link_to '', '#' %></li>
             <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
           <% elsif restaurant_signed_in? %>

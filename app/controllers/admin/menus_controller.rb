@@ -26,7 +26,7 @@ class Admin::MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
+        format.html { redirect_to admin_menus_path, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
@@ -67,6 +67,6 @@ class Admin::MenusController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_params
-      params.require(:menu).permit(:menu_category_id, :explanation, :takeout, :sales_status, :restaurant_id)
+      params.require(:menu).permit(:menu_category_id,:price, :menu_name, :explanation, :takeout, :sales_status, :restaurant_id)
     end
 end

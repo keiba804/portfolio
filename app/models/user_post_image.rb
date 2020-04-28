@@ -1,4 +1,5 @@
 class UserPostImage < ApplicationRecord
 	belongs_to :user
-	attachment :image
+	belongs_to :restaurant
+	attachment :user_post_mage
 end

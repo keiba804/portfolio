@@ -1,0 +1,42 @@
+<h2 >レストラン一覧</h2>
+<% @restaurants.each do |restaurant| %>
+<div class="view view-first">
+  <%= link_to customer_restaurant_path(restaurant) do %>
+      <%= attachment_image_tag restaurant, :restaurant_top_image, :fill, 120, 120, fallback: "no_image.jpg" %>
+  <% end %>
+</div>
+<h3 class="block-title">
+  <%= link_to restaurant.restaurant_name, customer_restaurant_path(restaurant) %>
+</h3>
+<p><%= restaurant.introduce_title %></p>
+<% end %>
+
+
+<div class="col-xs-9">
+	<h2>レストラン一覧</h2>
+	<!--users一覧 -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th>image</th>
+				<th>name</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @restaurants.each do |restaurant| %>
+			<tr>
+				<td><%= attachment_image_tag(restaurant, :restaurant_top_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+				<td><%= link_to restaurant.restaurant_name, customer_restaurant_path(restaurant) %></td>
+				<td>
+					<% if current_user.following?(restaurant) %>
+				       <%= link_to 'unfollow', unfollow_path(restaurant.id), method: :POST %>
+				     <% else %>
+				       <%= link_to 'follow', follow_path(restaurant.id), method: :POST %>
+				     <% end %>
+    			</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>

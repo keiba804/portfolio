@@ -2,7 +2,7 @@
 
 <h1>Menus</h1>
 
-<table>
+<table class = 'table'>
   <thead>
     <tr>
       <th>menu_category</th>
@@ -19,14 +19,14 @@
   <tbody>
     <% @menus.each do |menu| %>
       <tr>
-        <td><%= menu.menu_category_name %></td>
+        <td><%= menu.menu_category.menu_category_name %></td>
         <td><%= menu.menu_name %></td>
         <td><%= menu.explanation %></td>
         <td><%= menu.price %></td>
         <td><%= menu.takeout %></td>
         <td><%= menu.sales_status %></td>
-        <td><%= link_to '編集', edit_menu_path(menu) %></td>
-        <td><%= link_to '削除', menu, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <td><%= link_to '編集', edit_admin_menu_path(menu) %></td>
+        <td><%= link_to '削除', admin_menu_path(menu), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
