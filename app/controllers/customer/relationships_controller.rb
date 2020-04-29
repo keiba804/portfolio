@@ -2,12 +2,12 @@ class Customer::RelationshipsController < ApplicationController
 	before_action :authenticate_user!
 	def follow
 		current_user.follow(params[:id])
-		redirect_back(fallback_location: follow_path)
+		redirect_back(fallback_location: customer_follow_path)
 	end
 
 	def unfollow
 		current_user.unfollow(params[:id])
-		redirect_back(fallback_location: unfollow_path)
+		redirect_back(fallback_location: customer_unfollow_path)
 	end
 	def follower_index
 		@user = User.find(params[:id])
@@ -15,7 +15,4 @@ class Customer::RelationshipsController < ApplicationController
 	def following_index
 		@user = User.find(params[:id])
 	end
-	def user_params
-    	params.require(:user).permit(:name, :introduction, :profile_image)
-    end
 end

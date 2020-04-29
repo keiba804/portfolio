@@ -1,0 +1,17 @@
+<h2>フォローしている店舗の新着情報</h2>
+<table class = "table">
+	<thead>
+		<tr>
+			<th>店名</th>
+			<th>件名</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @posts.each do |post| %>
+		<td>
+			<th><%= post.restaurant_name %></th>
+			<th><%= post.post_title %></th>
+		</td>
+		<% end %>
+	</tbody>
+</table>

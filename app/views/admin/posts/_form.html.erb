@@ -13,25 +13,18 @@
 
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :件名 %>
     <%= form.text_field :post_title %>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
+    <%= form.label :本文 %>
     <%= form.text_area :post_body %>
   </div>
 
-  <div class="field">
-      <%= attachment_image_tag post, :post_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-    </div>
-    <label class="action">
-      <p>画像選択</p>
-      <%= form.attachment_field :post_image, style: "display:none;", placeholder: "添付画像" %>
-    </label>
-  </div>
+
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "投稿", class: "btn btn-md btn-primary" %>
   </div>
 <% end %>

@@ -17,11 +17,13 @@
       <nav>
         <div class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
+            <li><%= link_to 'top', customer_users_top_path %></li>
+            <li><%= link_to '投稿一覧', customer_posts_path %></li>
             <li><%= link_to ' マイページ', customer_user_path(current_user) %></li>
             <li><%= link_to ' レストラン一覧', customer_restaurants_path %></li>
-            <li><%= link_to '', '#' %></li>
             <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
           <% elsif restaurant_signed_in? %>
+            <li><%= link_to 'top', admin_restaurant_top_path %></li>
             <li><%= link_to ' メニュー一覧', admin_menus_path %></li>
             <li><%= link_to ' 投稿一覧', admin_posts_path %></li>
             <li><%= link_to ' 写真一覧', admin_restaurant_images_path %></li>

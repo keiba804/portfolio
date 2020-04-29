@@ -1,6 +1,8 @@
-<h3><%= @restaurant.restaurant_name %> メニュー</h3>
+<h1><%= @restaurant.restaurant_name %> メニュー</h1>
+
 
 <% @menu_categories.each do |menu_category| %>
+<h3><%= menu_category.menu_category_name %></h3>
 	<table class="table">
 		<thead>
 			<tr>
@@ -13,7 +15,7 @@
 		</thead>
 
 		<tbody>
-			<% menu_caregory.menus.each do |menu| %>
+			<% menu_category.menus.each do |menu| %>
 				<tr>
 					<td>
 						<%= menu.menu_name %>
@@ -28,7 +30,6 @@
 						<%= menu.explanation %>
 					</td>
 					<td>
-						<%= menu.sales_status %>
 					</td>
 				</tr>
 			<% end %>

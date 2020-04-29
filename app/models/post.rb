@@ -1,3 +1,3 @@
 class Post < ApplicationRecord
-	attachment :post_image
+	attachment :image
 end

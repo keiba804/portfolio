@@ -1,15 +1,22 @@
-<h2 >レストラン一覧</h2>
-<% @restaurants.each do |restaurant| %>
-<div class="view view-first">
-  <%= link_to customer_restaurant_path(restaurant) do %>
-      <%= attachment_image_tag restaurant, :restaurant_top_image, :fill, 120, 120, fallback: "no_image.jpg" %>
+<%= search_form_for @search, url: customer_restaurants_path do |f| %>
+
+  <%= f.condition_fields do |c| %>
+
+    <%= c.attribute_fields do |a| %>
+      <%= a.attribute_select %>
+    <% end %>
+
+    <%= c.predicate_select %>
+
+    <%= c.value_fields do |v| %>
+      <%= v.search_field :value %>
+    <% end %>
+
   <% end %>
-</div>
-<h3 class="block-title">
-  <%= link_to restaurant.restaurant_name, customer_restaurant_path(restaurant) %>
-</h3>
-<p><%= restaurant.introduce_title %></p>
+
+  <%= f.submit %>
 <% end %>
+
 
 
 <div class="col-xs-9">
@@ -31,11 +38,11 @@
 				<td><%= link_to restaurant.restaurant_name, customer_restaurant_path(restaurant) %></td>
 				<td>
 					<% if current_user.following?(restaurant) %>
-				       <%= link_to 'unfollow', unfollow_path(restaurant.id), method: :POST %>
-				     <% else %>
-				       <%= link_to 'follow', follow_path(restaurant.id), method: :POST %>
-				     <% end %>
-    			</td>
+						<%= link_to 'フォロー外す', customer_unfollow_path(restaurant.id), method: :POST %>
+					<% else %>
+						<%= link_to 'フォローする', customer_follow_path(restaurant.id), method: :POST %>
+					<% end %>
+				</td>
 			</tr>
 			<% end %>
 		</tbody>

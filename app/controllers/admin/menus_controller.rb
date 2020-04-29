@@ -38,9 +38,10 @@ class Admin::MenusController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
+    @menu = Menu.find(params[:id])
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
+        format.html { redirect_to admin_menus_path, notice: 'Menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit }
@@ -52,9 +53,10 @@ class Admin::MenusController < ApplicationController
   # DELETE /menus/1
   # DELETE /menus/1.json
   def destroy
+    @menu = Menu.find(params[:id])
     @menu.destroy
     respond_to do |format|
-      format.html { redirect_to menus_url, notice: 'Menu was successfully destroyed.' }
+      format.html { redirect_to admin_menus_path, notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

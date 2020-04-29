@@ -26,7 +26,7 @@
 		</thead>
 		<% @menu_categories.each do |menu_category| %>
 		<tr>
-			<td><%= menu_category.menu_category.menu_category_name %></td>
+			<td><%= menu_category.menu_category_name %></td>
 			<td><%= menu_category.active_status %></td>
 			<td><%= link_to "編集する",edit_admin_menu_category_path(menu_category), class: "btn btn-primary" %></td>
 		</tr>

@@ -1,6 +1,8 @@
 class Customer::RestaurantsController < ApplicationController
 	def index
-		@restaurants = Restaurant.all
+		@search = Restaurant.ransack(params[:q])
+		@search.build_condition if @search.conditions.empty?
+  		@restaurants = @search.result
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])

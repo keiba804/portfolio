@@ -1,27 +1,27 @@
 class Admin::RestaurantImagesController < ApplicationController
 	def index
-		@restaurant_images = restaurant.restaurant_images
+		@restaurant_images = current_restaurant.restaurant_images
 	end
 	def new
-		@restaurant_image = RestaurantImages.new
+		@restaurant_image = RestaurantImage.new
 	end
 
 	def create
-		@restaurant_image = RestaurantImages.new(genre_params)
+		@restaurant_image = RestaurantImage.new(restaurant_image_params)
+		restaurant_id = current_restaurant.id
 	    if @restaurant_image.save
 	    	redirect_to admin_restaurant_images_path, notice: "店舗写真を追加しました！"
 	    else
-	    	@restaurant_image = RestaurantImages.all
 	    	render :new
     	end
 	end
 
 	def edit
-		@restaurant_image = RestaurantImages.find(params[:id])
+		@restaurant_image = RestaurantImage.find(params[:id])
 	end
 
 	def update
-		@restaurant_image = RestaurantImages.find(params[:id])
+		@restaurant_image = RestaurantImage.find(params[:id])
 	    if @restaurant_image.update(menu_category_params)
 	      redirect_to admin_restaurant_images_path, notice: "店舗写真を編集しました！"
 	    else
@@ -34,7 +34,7 @@ class Admin::RestaurantImagesController < ApplicationController
 
 	private
 
-  def menu_category_params
-    params.require(:menu_category).permit(:name, :active_status)
+  def restaurant_image_params
+    params.require(:restaurant_image).permit(:restaurant_image_title, :restaurant_image_body, :restaurant_image_id, :restaurant_id)
   end
 end
