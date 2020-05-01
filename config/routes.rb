@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   namespace :customer do
   	resources :restaurants, only: [:index, :show] do
   		resources :menu_categories, only: [:index]
-  		resources :menus, only: [:index]
+  		resources :menus, only: [:index] do
+  			resource :favorites, only: [:create, :destroy]
+  		end
   		resources :restaurant_images, only: [:index, :show]
   		resources :user_post_images, only: [:new, :create, :destroy]
   	end
