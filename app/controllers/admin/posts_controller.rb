@@ -70,6 +70,6 @@ class Admin::PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:admin_id, :post_title, :post_body)
+      params.require(:post).permit(:restaurant_id, :post_title, :post_body)
     end
 end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	    when Restaurant
 	      admin_restaurant_top_path
 	    when User
-	      root_path
+	      customer_user_top_path
 	    end
 	end
   end

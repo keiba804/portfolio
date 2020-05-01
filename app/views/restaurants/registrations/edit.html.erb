@@ -4,40 +4,77 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <%= f.label :"管理者氏名（漢字）" %><br />
+    <%= f.text_field :admin_name_kanji, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :"管理者氏名（かな）" %><br />
+    <%= f.text_field :admin_name_kana %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗名 %><br />
+    <%= f.text_field :restaurant_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗電話番号 %><br />
+    <%= f.text_field :restaurant_phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :restaurant_adress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗ジャンル %><br />
+    <%= f.text_field :genre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :交通手段 %><br />
+    <%= f.text_field :access %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"営業時間・定休日" %><br />
+    <%= f.text_field :regular_holiday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"お通し・チャージ・サービス料等" %><br />
+    <%= f.text_field :charge %>
+  </div>
+
+  <div class="field">
+    <%= f.label :対応支払い方法 %><br />
+    <%= f.text_field :payment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗紹介タイトル %><br />
+    <%= f.text_field :introduce_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :店舗紹介本文 %><br />
+    <%= f.text_field :introduce_body %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "編集する" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>退会する</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>退会しますか? <%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

@@ -4,5 +4,5 @@ class Menu < ApplicationRecord
 	belongs_to :restaurant
 
 	enum sales_status:{ 販売中: 0, 売切: 1}
-	enum takeout:{ ○: 0, ×: 1}
+	enum takeout:{ 可能: 0, 不可: 1}
 end

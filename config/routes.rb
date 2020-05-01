@@ -31,8 +31,8 @@ Rails.application.routes.draw do
   	resources :posts, only: [:index, :show]
   	post 'follow/:id' => 'relationships#follow', as: 'follow'
   	post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-  	get 'follower_index/:id' => 'relationships#follower_index', as:'follower_index'
-  	get 'users/top' => 'users#top'
+  	get 'following_index/:id' => 'relationships#following_index', as:'follower_index'
+  	get 'user/top' => 'users#top'
   end
   root to: 'tops#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

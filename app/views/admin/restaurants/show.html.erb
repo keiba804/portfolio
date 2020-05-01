@@ -1,0 +1,78 @@
+<table class="table table-hover table-inverse">
+  <tbody>
+    <tr>
+      <th>店舗管理者（漢字）</th>
+      <td>
+        <%= current_restaurant.admin_name_kanji %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗管理者（カナ）</th>
+      <td>
+        <%= current_restaurant.admin_name_kana %>
+      </td>
+    </tr>
+    <tr>
+      <th>レストラン名</th>
+      <td>
+        <%= current_restaurant.restaurant_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td>
+        <%= current_restaurant.genre %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗電話番号</th>
+      <td>
+        <%= current_restaurant.restaurant_phone_number %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗住所</th>
+      <td>
+        <%= current_restaurant.restaurant_adress %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗アクセス</th>
+      <td>
+        <%= current_restaurant.access %>
+      </td>
+    </tr>
+    <tr>
+      <th>休業日・営業時間</th>
+      <td>
+        <%= current_restaurant.regular_holiday %>
+      </td>
+    </tr>
+    <tr>
+      <th>チャージ・お通し・席料等</th>
+      <td>
+        <%= current_restaurant.charge %>
+      </td>
+    </tr>
+    <tr>
+      <th>対応支払い方法</th>
+      <td>
+        <%= current_restaurant.payment %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗紹介タイトル</th>
+      <td>
+        <%= current_restaurant.introduce_title %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗紹介本文</th>
+      <td>
+        <%= current_restaurant.introduce_body %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><%= link_to 'TOPに戻る', admin_restaurant_top_path %>/<%= link_to '編集する', edit_restaurant_registration_path %></p>

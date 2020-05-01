@@ -1,0 +1,26 @@
+<h2>フォローしているお店</h2>
+	<!--users一覧 -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th>店名</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% current_user.following_user.where.not(id: current_user.id).each do |restaurant| %>
+			<tr>
+				<td><%= restaurant.restaurant_name %></td>
+				<td><%= link_to "Show", customer_restaurant_path(restaurant) %></td>
+				<td><% if current_user.following?(restaurant) %>
+				       <%= link_to 'unfollow', customer_unfollow_path(restaurant), method: :DESTROY %>
+				     <% else %>
+				       <%= link_to 'follow', customer_follow_path(restaurant), method: :POST %>
+				     <% end %>
+    			</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
