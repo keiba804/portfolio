@@ -1,7 +1,8 @@
-class Admin::RestaurantImagesController < ApplicationController
+class Customer::RestaurantImagesController < ApplicationController
 	def index
-		@restaurant_images = current_restaurant.restaurant_images
-		@user_post_images= current_restaurant.user_post_images
+		@restaurant = Restaurant.find([:restaurant_id])
+		@restaurant_images = @restaurant.restaurant_images
+		@user_post_images= @restaurant.user_post_images
 	end
 	def new
 		@restaurant_image = RestaurantImage.new

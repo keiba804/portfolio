@@ -1,0 +1,2 @@
+module Customer::RestaurantImagesHelper
+end

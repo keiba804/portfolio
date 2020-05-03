@@ -12,15 +12,15 @@
 
 <h4>お店のこだわり</h4>
 <% @restaurant_images.each do |restaurant_image| %>
-	<% link_to customer_restaurant_post_path do %>
-		<%= attachment_image_tag restaurant_image, :restaurant_image, :fill, fallback: "no_image.jpg" %>
-		<%= restaurant_image.title %>
-	<% end %>
+	<%= attachment_image_tag restaurant_image, :restaurant_image, :fill, fallback: "no_image.jpg" %>
+	<%= restaurant_image.restaurant_image_title %>
 <% end %>
 
 <h4>投稿写真</h4>
 <% @user_post_images.each do |user_post_image| %>
 	<%= attachment_image_tag user_post_image, :user_post_image, :fill, fallback: "no_image.jpg" %>
-	<%= restaurant_image.title %>
 <% end %>
+<p><%= link_to "このお店の写真を投稿する", new_customer_restaurant_user_post_image_path(@restaurant) %></p>
+
+<p><%= link_to "戻る", :back %></p>
 

@@ -37,6 +37,7 @@
 
 
   <div class="field">
+  	<%= f.hidden_field :job_type %>
     <%= form.label :sales_status %>
     <%= form.label :販売中　%>
     <%= form.radio_button :sales_status , :販売中 %>
@@ -46,10 +47,10 @@
 
   <div class="field">
     <%= form.label :takeout %>
-    <%= form.label :○　%>
-    <%= form.radio_button :takeout , :○ %>
-    <%= form.label :✖️ %>
-    <%= form.radio_button :takeout , :✖️ %>
+    <%= form.label :可能　%>
+    <%= form.radio_button :takeout , :可能 %>
+    <%= form.label :不可 %>
+    <%= form.radio_button :takeout , :不可 %>
   </div>
 
   <div class="actions">

@@ -1,35 +1,54 @@
 
-<h1>Menus</h1>
+<h1><%= @restaurant.restaurant_name %> メニュー</h1>
 
-<table class = 'table'>
-  <thead>
-    <tr>
-      <th>menu_category</th>
-      <th>menu_name</th>
-      <th>explanation</th>
-      <th>price</th>
-      <th>takeout</th>
-      <th>sales_status</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @menus.each do |menu| %>
+<% @menu_categories.each do |menu_category| %>
+<h3><%= menu_category.menu_category_name %></h3>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= menu.menu_category.menu_category_name %></td>
-        <td><%= menu.menu_name %></td>
-        <td><%= menu.explanation %></td>
-        <td><%= menu.price %></td>
-        <td><%= menu.takeout %></td>
-        <td><%= menu.sales_status %></td>
-        <td><%= link_to '編集', edit_admin_menu_path(menu) %></td>
-        <td><%= link_to '削除', admin_menu_path(menu), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <th>メニュー名</th>
+        <th>価格</th>
+        <th>テイクアウト</th>
+        <th>商品説明</th>
+        <th>テイクアウト</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% menu_category.menus.each do |menu| %>
+        <tr>
+          <td>
+            <%= menu.menu_name %>
+          </td>
+          <td>
+            <%= menu.price %>
+          </td>
+          <td>
+            <%= menu.explanation %>
+          </td>
+          <td>
+            <%= menu.sales_status %>
+          </td>
+          <td>
+            <%= menu.takeout %>
+          </td>
+          <td>
+            <%= menu.favorites.count %> いいね
+          </td>
+          <td><%= link_to '編集', edit_admin_menu_path(menu) %></td>
+          <td><%= link_to '削除', admin_menu_path(menu), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <br>
 

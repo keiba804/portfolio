@@ -10,10 +10,7 @@ class Customer::RelationshipsController < ApplicationController
 		redirect_back(fallback_location: customer_unfollow_path)
 	end
 	def follower_index
-		@restaurant = Restaurant.find(params[:id])
-	end
-	def following_index
-		@user = User.find(params[:id])
+		@restaurants = current_user.following_user
 	end
 	private
 	def restaurant_params

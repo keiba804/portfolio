@@ -1,5 +1,5 @@
 <h2>フォローしているお店</h2>
-	<!--users一覧 -->
+<% if @restaurants.present? %>
 	<table class="table">
 		<thead>
 			<tr>
@@ -10,7 +10,7 @@
 		</thead>
 
 		<tbody>
-			<% current_user.following_user.where.not(id: current_user.id).each do |restaurant| %>
+			<% @restaurants.each do |restaurant| %>
 			<tr>
 				<td><%= restaurant.restaurant_name %></td>
 				<td><%= link_to "Show", customer_restaurant_path(restaurant) %></td>
@@ -24,3 +24,6 @@
 			<% end %>
 		</tbody>
 	</table>
+<% else %>
+	<h4>フォローしているお店はありません</h4>
+<% end %>

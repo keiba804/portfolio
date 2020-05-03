@@ -1,0 +1,13 @@
+<div class="favorite", id="favorite-link-<%= menu.id %>">
+	<% if menu.favorited_by?(current_user) %>
+	    <%= link_to customer_restaurant_menu_favorites_path(menu_id:menu.id), method: :delete, remote: true do %>
+		    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+		    <%= menu.favorites.count %> いいね
+	    <% end %>
+	<% else %>
+	    <%= link_to customer_restaurant_menu_favorites_path(menu_id:menu.id), method: :post, remote: true do %>
+		    <i class="fa fa-heart-o" aria-hidden="true"></i>
+		    <%= menu.favorites.count %> いいね
+	    <% end %>
+	<% end %>
+</div>

@@ -4,8 +4,8 @@ class Admin::MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    restaurant = current_restaurant
-    @menus = restaurant.menus
+    @restaurant = current_restaurant
+    @menu_categories = @restaurant.menu_categories.where(active_status: 0)
   end
 
   # GET /menus/new

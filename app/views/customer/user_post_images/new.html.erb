@@ -1,0 +1,18 @@
+<h3>画像投稿フォーム</h3>
+
+<% if @user_post_image.errors.any? %>
+    <%= @user_post_image.errors.count %>件のエラーが発生しました
+    <% @user_post_image.errors.full_messages.each do |message| %>
+        <%= message %>
+    <% end %>
+<% end %>
+
+<%= form_for(@user_post_image, url: customer_restaurant_user_post_images_path, method: :post) do |f| %>
+  <div class="form-group has-icon">
+    <div class="user-edit-image">
+        <%= attachment_image_tag @user_post_image, :user_post_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+    </div>
+      <%= f.attachment_field :user_post_image, placeholder: "レストラン投稿画像" %>
+  </div>
+  <%= f.submit "投稿" %><br>
+<% end %>
