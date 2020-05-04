@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
+	has_many :seat_availabilities, dependent: :destroy
+	has_many :genres, dependent: :destroy
 	has_many :menus, dependent: :destroy
 	has_many :restaurant_images, dependent: :destroy
 	has_many :posts, dependent: :destroy
@@ -7,10 +9,10 @@ class Restaurant < ApplicationRecord
 	has_many :follower_user, through: :followed, source: :follower
 	has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 	attachment :restaurant_top_image
+	enum restaurant_status:{ 非公表:0, 準備中:1, 空席余裕あり:2, 空席僅か:3, 満席:4}
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  enum restaurant_status:{ 準備中:0, 店内余裕あり:1, 空席僅か:2, 満席:3}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

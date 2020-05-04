@@ -1,19 +1,20 @@
 <h2> <%= current_restaurant.restaurant_name %> 管理者画面 </h2>
 
 <table class="table table-hover table-inverse">
-	<tbody>
-		<tr>
-		  <th>空席情報</th>
-		  <td>
-		    <%= current_restaurant.restaurant_status %>（<%= current_restaurant.updated_at %>更新)
-		  </td>
-		</tr>
-		<tr>
-		  <th>空席情報更新フォーム</th>
-		  <td>
-		  </td>
-		</tr>
-	</tbody>
+		<tbody>
+			<tr>
+				<th>空席情報</th>
+				<td>
+					<%= current_restaurant.restaurant_status %>
+				</td>
+			</tr>
+			<tr>
+			<th></th>
+				<td>
+					<%= link_to '空席情報の更新', edit_admin_restaurant_path(current_restaurant) %>
+				</td>
+			</tr>
+		</tbody>
 </table>
 
 

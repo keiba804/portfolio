@@ -79,3 +79,4 @@ gem 'kaminari'
 
 gem 'paranoia'
 
+gem 'dotenv-rails'

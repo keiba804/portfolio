@@ -54,7 +54,7 @@ class Restaurants::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:restaurant_name, :email,:admin_name_kana, :restaurant_name, :genre, :restaurant_phone_number, :restaurant_adress, :access, :regular_holiday, :charge, :payment, :introduce_title, :introduce_body, :restaurant_top_image, :admin_name_kanji])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:restaurant_name, :email,:admin_name_kana, :restaurant_name, :genre, :restaurant_phone_number, :restaurant_adress, :access, :regular_holiday, :charge, :payment, :introduce_title, :introduce_body, :restaurant_top_image, :admin_name_kanji, :restaurant_status])
   end
 
   # The path used after sign up.
