@@ -1,85 +1,94 @@
-<h2>レストラン管理者　新規登録</h2>
+<h2>レストラン情報　新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="form-group">
+    <%= f.label :"レストラントップ画像" %>
+    <div class="restaurant-top-image">
+        <%= attachment_image_tag resource, :restaurant_top_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120'%>
+    </div>
+    <label class="control-label sr-only">ProfileImage</label>
+    <%= f.attachment_field :restaurant_top_image, placeholder: "レストラントップ画像", %>
+  </div>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :"管理者氏名（漢字）" %><br />
-    <%= f.text_field :admin_name_kanji, autofocus: true %>
+    <%= f.text_field :admin_name_kanji, autofocus: true, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"管理者氏名（かな）" %><br />
-    <%= f.text_field :admin_name_kana %>
+    <%= f.text_field :admin_name_kana, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗名 %><br />
-    <%= f.text_field :restaurant_name %>
+    <%= f.text_field :restaurant_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗電話番号 %><br />
-    <%= f.text_field :restaurant_phone_number %>
+    <%= f.text_field :restaurant_phone_number, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :restaurant_adress %><br />
-    <%= f.text_field :restaurant_adress %>
+  <div class="form-group">
+    <%= f.label :レストラン住所 %><br />
+    <%= f.text_field :restaurant_adress, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗ジャンル %><br />
-    <%= f.text_field :genre %>
+    <%= f.text_field :genre, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :交通手段 %><br />
-    <%= f.text_field :access %>
+  <div class="form-group">
+    <%= f.label :最寄駅 %><br />
+    <%= f.text_field :access, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"営業時間・定休日" %><br />
-    <%= f.text_field :regular_holiday %>
+    <%= f.text_field :regular_holiday, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"お通し・チャージ・サービス料等" %><br />
-    <%= f.text_field :charge %>
+    <%= f.text_field :charge, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :対応支払い方法 %><br />
-    <%= f.text_field :payment %>
+    <%= f.text_field :payment, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗紹介タイトル %><br />
-    <%= f.text_field :introduce_title %>
+    <%= f.text_field :introduce_title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗紹介本文 %><br />
-    <%= f.text_field :introduce_body %>
+    <%= f.text_field :introduce_body, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :パスワード %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"パスワード（確認）" %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
   </div>
 
   <div class="actions">

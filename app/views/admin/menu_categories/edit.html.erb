@@ -1,5 +1,7 @@
 <h2>カテゴリー編集画面</h2>
 
+<%= render 'layouts/error', obj: @menu_category %>
+
 
 <div class="col-xs-12">
 	<%= form_for @menu_category, url: admin_menu_category_path, method: :patch do |f| %>

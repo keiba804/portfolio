@@ -3,4 +3,6 @@ class MenuCategory < ApplicationRecord
 	belongs_to :restaurant
 
 	enum active_status:{ 有効: 0, 無効: 1}
+
+	validates :active_status, presence: true
 end

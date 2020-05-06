@@ -61,6 +61,12 @@ class Admin::MenusController < ApplicationController
     end
   end
 
+  def sort
+    fruit = Fruit.find(params[:fruit_id])
+    fruit.update(fruit_params)
+    render nothing: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu

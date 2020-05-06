@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>レストラン情報　編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -11,67 +11,67 @@
     <%= f.attachment_field :restaurant_top_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"管理者氏名（漢字）" %><br />
     <%= f.text_field :admin_name_kanji, autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"管理者氏名（かな）" %><br />
     <%= f.text_field :admin_name_kana %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗名 %><br />
     <%= f.text_field :restaurant_name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗電話番号 %><br />
     <%= f.text_field :restaurant_phone_number %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :住所 %><br />
     <%= f.text_field :restaurant_adress %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗ジャンル %><br />
     <%= f.text_field :genre %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :交通手段 %><br />
     <%= f.text_field :access %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"営業時間・定休日" %><br />
     <%= f.text_field :regular_holiday %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :"お通し・チャージ・サービス料等" %><br />
     <%= f.text_field :charge %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :対応支払い方法 %><br />
     <%= f.text_field :payment %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗紹介タイトル %><br />
     <%= f.text_field :introduce_title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :店舗紹介本文 %><br />
     <%= f.text_field :introduce_body %>
   </div>

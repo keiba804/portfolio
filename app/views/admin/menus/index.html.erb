@@ -1,19 +1,21 @@
 
 <h1><%= @restaurant.restaurant_name %> メニュー</h1>
-
+<h2>カテゴリー一覧</h2>
+<ul>
+  <% @menu_categories.each do |menu_category| %>
+    <li><a href="#{menu_category.id}"><%= menu_category.menu_category_name %></a></li>
+  <% end %>
+<ul>
 
 <% @menu_categories.each do |menu_category| %>
 <h3><%= menu_category.menu_category_name %></h3>
-  <table class="table">
+  <table class="table teble-sortable" id="{menu_category.id}" >
     <thead>
       <tr>
         <th>メニュー名</th>
         <th>価格</th>
-        <th>テイクアウト</th>
         <th>商品説明</th>
         <th>テイクアウト</th>
-        <th></th>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -23,7 +25,7 @@
 
     <tbody>
       <% menu_category.menus.each do |menu| %>
-        <tr>
+        <tr item>
           <td>
             <%= menu.menu_name %>
           </td>
@@ -34,10 +36,10 @@
             <%= menu.explanation %>
           </td>
           <td>
-            <%= menu.sales_status %>
+            <%= menu.takeout %>
           </td>
           <td>
-            <%= menu.takeout %>
+            <%= menu.sales_status %>
           </td>
           <td>
             <%= menu.favorites.count %> いいね

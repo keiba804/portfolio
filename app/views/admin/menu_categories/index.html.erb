@@ -1,35 +1,55 @@
-<h2>カテゴリー追加・一覧画面</h2>
+		<%= render 'layouts/error', obj: @menu_category %>
 
 
-<div class="col-xs-12">
-	<%= form_for @menu_category, url: admin_menu_categories_path do |f| %>
-		<div class="field">
-			<%= f.label :メニューカテゴリー名　%>
-			<%= f.text_field :menu_category_name %>
-			<%= f.radio_button :active_status , :有効 %>
-			<%= f.label :有効　%>
-			<%= f.radio_button :active_status , :無効 %>
-			<%= f.label :無効　%>
-        </div>
-        <div class="action">
-        	<%= f.submit "追加する", class: "btn btn-md btn-primary" %>
-        </div>
-    <% end %>
+<div class="col-xs-12 row">
+	<div class="col-xs-4">
+		<h2>カテゴリー追加</h2>
+		<%= form_for @menu_category, url: admin_menu_categories_path do |f| %>
 
-    <table class = "table">
-		<thead>
-			<tr class="active">
-				<th>カテゴリー</th>
-				<th>状態</th>
-				<th></th>
-			</tr>
-		</thead>
-		<% @menu_categories.each do |menu_category| %>
-		<tr>
-			<td><%= menu_category.menu_category_name %></td>
-			<td><%= menu_category.active_status %></td>
-			<td><%= link_to "編集する",edit_admin_menu_category_path(menu_category), class: "btn btn-primary" %></td>
-		</tr>
-		<% end %>
-	</table>
+			<div class="form-group">
+				<div>
+				<%= f.label :menu_category_name, 'メニューカテゴリー名' %>
+				</div>
+				<div>
+					<%= f.text_field :menu_category_name, class: "form-control" %>
+				</div>
+			</div>
+			<div class=""></div>
+			<div class="form-group">
+				<div class="form-inline">
+				<%= f.label :有効　%>
+				<%= f.radio_button :active_status , :有効 %>
+				<%= f.label :無効　%>
+				<%= f.radio_button :active_status , :無効 %>
+			</div>
+	        </div>
+	    	<%= f.submit "追加する", class: "btn btn-md btn-primary" %>
+	    <% end %>
+	</div>
+	<div class="col-xs-8">
+		<h2>カテゴリー 一覧・編集</h2>
+	    <table class = "table">
+			<thead>
+				<tr class="active">
+					<th>カテゴリー</th>
+					<th>状態</th>
+					<th></th>
+				</tr>
+			</thead>
+			<% @menu_categories.each do |menu_category| %>
+				<%= form_for menu_category, url: admin_menu_category_path(menu_category), method: :patch do |f| %>
+					<tr>
+						<td><%= f.text_field :menu_category_name, class: "form-control" %></td>
+						<td >
+							<%= f.label :有効　%>
+							<%= f.radio_button :active_status , :有効 %>
+							<%= f.label :無効　%>
+							<%= f.radio_button :active_status , :無効 %>
+						</td>
+						<td><%= f.submit "編集する", class: "btn btn-md btn-primary" %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</div>
 </div>
