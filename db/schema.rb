@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_130907) do
+ActiveRecord::Schema.define(version: 2020_05_03_155442) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_130907) do
     t.string "menu_name"
     t.string "explanation"
     t.string "price"
-    t.string "takeout"
+    t.integer "takeout"
     t.integer "sales_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_130907) do
     t.string "introduce_title"
     t.text "introduce_body"
     t.integer "restaurant_top_image_id"
+    t.integer "restaurant_status", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -92,7 +93,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_130907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "admin_name_kanji"
-    t.integer "restaurant_status", default: 0
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end

@@ -1,5 +1,6 @@
 class Admin::RestaurantsController < ApplicationController
 	def top
+		@posts = current_restaurant.posts
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])

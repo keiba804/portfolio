@@ -15,9 +15,7 @@ Rails.application.routes.draw do
   	get 'restaurant/top' => 'restaurants#top'
   	resources :seat_availabilities, only: [:update, :create, :new, :edit]
   	resources :menu_categories, only: [:index, :create, :edit, :update, :destroy]
-  	resources :menus, only: [:index, :create, :edit, :update, :destroy, :new] do
-	    put :sort
-	end
+  	resources :menus, only: [:index, :create, :edit, :update, :destroy, :new]
   	resources :posts
   	resources :restaurants, only: [:show, :update, :edit, :update]
   	resources :restaurant_images
@@ -39,10 +37,6 @@ Rails.application.routes.draw do
   	post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   	get 'following_index/:id' => 'relationships#following_index', as:'follower_index'
   	get 'user/top' => 'users#top'
-  	# お問合わせ機能
-  	get 'inquiry' => 'inquiry#index'              # 入力画面
-	post 'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
-	post 'inquiry/thanks' => 'inquiry#thanks'     # 送信完了画面
   end
   root to: 'tops#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

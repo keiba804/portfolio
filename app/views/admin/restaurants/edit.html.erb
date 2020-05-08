@@ -1,17 +1,23 @@
-<%= form_for @restaurant, url:admin_restaurant_path, method: :put do |f| %>
-	<div class="field">
-		<%= f.label :非公表 %>
-		<%= f.radio_button :restaurant_status, :非公表 %>
-		<%= f.label :準備中 %>
-		<%= f.radio_button :restaurant_status , :準備中 %>
-		<%= f.label :空席余裕あり %>
-		<%= f.radio_button :restaurant_status , :空席余裕あり %>
-		<%= f.label :空席僅か %>
-		<%= f.radio_button :restaurant_status , :空席僅か %>
-		<%= f.label :満席 %>
-		<%= f.radio_button :restaurant_status , :満席 %>
-    </div>
-    <div class="action">
-    	<%= f.submit "更新", class: "btn btn-md btn-primary" %>
-    </div>
-<% end %>
+<div class="col-xs-12">
+	<div class="row">
+		<div class="col-xs-3 side-ber">
+			<%= render 'admin_sideber' %>
+		</div>
+		<div class="col-xs-9">
+			<h2><%= current_restaurant.restaurant_name %> 空席情報更新ページ</h2>
+			<%= form_for @restaurant, url:admin_restaurant_path, method: :put do |f| %>
+			<div class="col-xs-8">
+				<div class="row">
+					<div class="form-group col-xs-4">
+						<%= f.select :restaurant_status,["非公表", "準備中", "空席余裕あり", "空席僅か", "満席" ], {}, class: 'form-control' %>
+				    </div>
+				    <div class="action col-xs-2">
+				    	<%= f.submit "更新", class: "btn btn-md btn-primary form-control" %>
+				    </div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+

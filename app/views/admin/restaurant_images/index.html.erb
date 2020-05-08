@@ -1,33 +1,38 @@
-<div class="row">
-  <h2 class="head">店舗投稿写真一覧</h2>
-  <ul class="product-group clearfix">
-    <% if @restaurant_images.present? %>
-      <% @restaurant_images.each do |restaurant_image| %>
-        <div class="col-md-2">
-          <%= link_to admin_restaurant_image_path(restaurant_image) do %>
-            <%= attachment_image_tag(restaurant_image, :restaurant_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120') %>
-            <p><%= restaurant_image.restaurant_image_title %></p>
-          <% end %>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'admin/restaurants/admin_sideber' %>
+      </div>
+    <div class="col-xs-9">
+          <h2>店舗投稿写真一覧</h2>
+          <ul class="restaurant-image clearfix">
+            <% if @restaurant_images.present? %>
+              <% @restaurant_images.each do |restaurant_image| %>
+                <div class="col-xs-2">
+                  <%= link_to admin_restaurant_image_path(restaurant_image) do %>
+                    <%= attachment_image_tag(restaurant_image, :restaurant_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120') %>
+                    <p><%= restaurant_image.restaurant_image_title %></p>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <h4>投稿写真はありません。</h4>
+            <% end %>
+          </ul>
+          <p><%= link_to "一覧を見る", admin_restaurant_images_path %>|<%= link_to "写真を投稿する", new_admin_restaurant_image_path %></p>
         </div>
-      <% end %>
-    <% else %>
-      <h4>投稿写真はありません。</h4>
-    <% end %>
-    <%= link_to "写真を投稿する", new_admin_restaurant_image_path %>
-  </ul>
-</div>
-<div class="row">
-  <h2 class="head">ユーザー店舗投稿写真一覧</h2>
-  <ul class="product-group clearfix">
-    <% if @user_post_images.present? %>
-      <% @user_post_images.each do |user_post_image| %>
-        <div class="col-md-2">
-          <%= attachment_image_tag(user_post_image, :user_post_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120') %>
-          <p><%= user_post_image.user_image_title %></p>
+        <div class="row">
+          <h2 class="head">ユーザー店舗投稿写真一覧</h2>
+          <ul class="product-group clearfix">
+            <% if @user_post_images.present? %>
+              <% @user_post_images.each do |user_post_image| %>
+                <div class="col-md-2">
+                  <%= attachment_image_tag(user_post_image, :user_post_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120') %>
+                  <p><%= user_post_image.user_image_title %></p>
+                </div>
+              <% end %>
+            <% else %>
+              <h4>ユーザー投稿写真はありません。</h4>
+            <% end %>
+          </ul>
         </div>
-      <% end %>
-    <% else %>
-      <h4>ユーザー投稿写真はありません。</h4>
-    <% end %>
-  </ul>
-</div>

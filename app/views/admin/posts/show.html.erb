@@ -1,16 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-
-<p>
-  <strong>件名:</strong>
-  <%= @post.post_title %>
-</p>
-
-<p>
-  <strong>:</strong>
-  <%= @post.post_body %>
-</p>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+    	<%= render 'admin/restaurants/admin_sideber' %>
+    </div>
+    <div class="col-xs-9">
+    	<h3><%= @post.post_title %></h3>
+			<%= simple_format(@post.post_body) %>
+		<%= link_to 'インフォメーション一覧へ', admin_post_path(@post) %> |
+		<%= link_to 'TOP', admin_restaurant_top_path %>
+    </div>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_admin_post_path(@post) %> |
-<%= link_to 'Back', admin_posts_path %>
+<%= link_to 'Back', :back %>

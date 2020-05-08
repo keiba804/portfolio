@@ -10,7 +10,11 @@ class Admin::MenusController < ApplicationController
 
   # GET /menus/new
   def new
-    @menu = Menu.new
+    if current_restaurant.menu_categories.present?
+      @menu = Menu.new
+    else
+      redirect_to admin_menu_categories_path, notice: '【！】メニューカテゴリーを作成してください'
+    end
   end
 
   # GET /menus/1/edit
@@ -59,12 +63,6 @@ class Admin::MenusController < ApplicationController
       format.html { redirect_to admin_menus_path, notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def sort
-    fruit = Fruit.find(params[:fruit_id])
-    fruit.update(fruit_params)
-    render nothing: true
   end
 
   private

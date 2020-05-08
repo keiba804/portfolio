@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= form.label :menu_category %>
-    <%= form.collection_select :menu_category_id, MenuCategory.all, :id, :menu_category_name, {include_blank: "選択してください"} %>
+    <%= form.collection_select :menu_category_id, current_restaurant.menu_categories, :id, :menu_category_name, {include_blank: "選択してください"} %>
   </div>
 
 
@@ -37,7 +37,6 @@
 
 
   <div class="field">
-  	<%= f.hidden_field :job_type %>
     <%= form.label :sales_status %>
     <%= form.label :販売中　%>
     <%= form.radio_button :sales_status , :販売中 %>
@@ -46,7 +45,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :takeout %>
     <%= form.label :可能　%>
     <%= form.radio_button :takeout , :可能 %>
     <%= form.label :不可 %>
@@ -58,4 +56,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', admin_menus_path %>
+<%= link_to 'Back', :back %>

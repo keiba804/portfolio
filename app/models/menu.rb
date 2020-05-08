@@ -9,7 +9,5 @@ class Menu < ApplicationRecord
 	enum sales_status:{ 販売中: 0, 売切: 1}
 	enum takeout:{ 可能: 0, 不可: 1}
 
-	include RankedModel
-	ranks :row_order
 
 end

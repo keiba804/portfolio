@@ -9,7 +9,7 @@
         <%= attachment_image_tag resource, :restaurant_top_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120'%>
     </div>
     <label class="control-label sr-only">ProfileImage</label>
-    <%= f.attachment_field :restaurant_top_image, placeholder: "レストラントップ画像", %>
+    <%= f.attachment_field :restaurant_top_image, placeholder: "レストラントップ画像" %>
   </div>
 
 
@@ -40,7 +40,7 @@
 
   <div class="form-group">
     <%= f.label :レストラン住所 %><br />
-    <%= f.text_field :restaurant_adress, class: "form-control" %>
+    <%= f.text_area :restaurant_adress, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -50,32 +50,32 @@
 
   <div class="form-group">
     <%= f.label :最寄駅 %><br />
-    <%= f.text_field :access, class: "form-control" %>
+    <%= f.text_area :access, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :"営業時間・定休日" %><br />
-    <%= f.text_field :regular_holiday, class: "form-control" %>
+    <%= f.text_area :regular_holiday, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :"お通し・チャージ・サービス料等" %><br />
-    <%= f.text_field :charge, class: "form-control" %>
+    <%= f.text_area :charge, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :対応支払い方法 %><br />
-    <%= f.text_field :payment, class: "form-control" %>
+    <%= f.text_area :payment, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :店舗紹介タイトル %><br />
-    <%= f.text_field :introduce_title, class: "form-control" %>
+    <%= f.text_area :introduce_title, class: "form-control"%>
   </div>
 
   <div class="form-group">
     <%= f.label :店舗紹介本文 %><br />
-    <%= f.text_field :introduce_body, class: "form-control" %>
+    <%= f.text_area :introduce_body, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -92,7 +92,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "登録" %>
+    <%= f.submit "登録", class: "btn btn-md btn-primary form-control" %>
   </div>
 <% end %>
 

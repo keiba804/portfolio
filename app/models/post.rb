@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
-	attachment :image
+	attachment :post_image
 	belongs_to :restaurant
 end

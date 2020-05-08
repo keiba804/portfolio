@@ -1,60 +1,63 @@
-<h1>New Menu</h1>
-
-<%= form_for @menu, url: admin_menus_path, local: true do |form| %>
-  <% if @menu.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
-
-      <ul>
-      <% @menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+    	<%= render 'admin/restaurants/admin_sideber' %>
     </div>
-  <% end %>
+    <div class="col-xs-5">
+		<h3>新規メニュー 登録フォーム</h3>
+		<%= form_for @menu, url: admin_menus_path, local: true do |form| %>
+		  <% if @menu.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :menu_category %>
-    <%= form.collection_select :menu_category_id, current_restaurant.menu_categories, :id, :menu_category_name, {include_blank: "選択してください"} %>
+		      <ul>
+		      <% @menu.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+		  <div class="form-group">
+		    <%= form.label :menu_category, 'メニューカテゴリー' %>
+		    <%= form.collection_select :menu_category_id, current_restaurant.menu_categories, :id, :menu_category_name, {include_blank: "選択してください"}, class: "form-control" %>
+		  </div>
+
+
+		  <div class="form-group">
+		    <%= form.label :name, 'メニュー名' %>
+		    <%= form.text_field :menu_name, class: "form-control" %>
+		  </div>
+
+
+		  <div class="form-group">
+		    <%= form.label :explanation, '商品説明' %>
+		    <%= form.text_field :explanation, class: "form-control" %>
+		  </div>
+
+		  <div class="form-group">
+		    <%= form.label :price, '価格（税抜）' %>
+		    <%= form.text_field :price, class: "form-control" %>
+		  </div>
+
+
+		  <div class="form-group">
+		  	<%= form.label :sales_status, '販売状況' %>
+		  	<%= form.select :sales_status,["販売中", "売切"], {}, class: "form-control" %>
+		  </div>
+
+		  <div class="form-group">
+		  	<%= form.label :takeout, 'テイクアウト' %>
+		  	<%= form.select :takeout,["可能", "不可"], {}, class: "form-control" %>
+		  </div>
+
+		  <div class="actions">
+		    <%= form.submit "作成", class: "btn btn-md btn-primary form-control" %>
+		  </div>
+		<% end %>
+
+		<%= link_to '一覧へ', admin_menus_path %>
+
+    </div>
   </div>
-
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :menu_name %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :explanation %>
-    <%= form.text_field :explanation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :sales_status %>
-    <%= form.label :販売中　%>
-    <%= form.radio_button :sales_status , :販売中 %>
-    <%= form.label :売切　%>
-    <%= form.radio_button :sales_status , :売切 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :takeout %>
-    <%= form.label :可能　%>
-    <%= form.radio_button :takeout , :可能 %>
-    <%= form.label :不可 %>
-    <%= form.radio_button :takeout , :不可 %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "作成", class: "btn btn-md btn-primary" %>
-  </div>
-<% end %>
-
-<%= link_to '一覧へ', admin_menus_path %>
+</div>

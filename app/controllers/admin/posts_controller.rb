@@ -55,9 +55,10 @@ class Admin::PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
+    post = Post.find(params[:id])
+    post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to admin_posts_path(current_restaurant), notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +71,6 @@ class Admin::PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:restaurant_id, :post_title, :post_body)
+      params.require(:post).permit(:restaurant_id, :post_title, :post_body, :post_image_id)
     end
 end

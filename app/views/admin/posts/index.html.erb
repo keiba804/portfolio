@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<table class = "table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.post_title %></td>
-        <td><%= link_to 'Show', admin_post_path(post) %></td>
-        <td><%= link_to 'Edit', edit_admin_post_path(post) %></td>
-        <td><%= link_to 'Destroy', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_admin_post_path %>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'admin/restaurants/admin_sideber' %>
+    </div>
+    <div class="col-xs-9">
+      <h1>店舗インフォメーション 一覧</h1>
+        <table class = "table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= post.updated_at.strftime('%Y/%m/%d') %></td>
+                <td><%= link_to  admin_post_path(post) do %><%= post.post_title %><% end %></td>
+                <td><%= link_to '編集', edit_admin_post_path(post) %></td>
+                <td><%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <%= link_to 'インフォメーションを投稿をする', new_admin_post_path %>
+    </div>
+  </div>
+</div>
