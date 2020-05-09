@@ -1,8 +1,13 @@
 class Customer::RestaurantsController < ApplicationController
 	def index
-		@search = Restaurant.ransack(params[:q])
-		@search.build_condition if @search.conditions.empty?
-  		@restaurants = @search.result
+		if params[:q] != nil
+			params[:q]['introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_all'] = params[:q]['introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_all'].split(/[\p{blank}\s]+/)
+			@search = Restaurant.ransack(params[:q])
+			@restaurants = @search.result
+		else
+			@search = Restaurant.ransack(params[:q])
+			@restaurants = @search.result
+		end  		
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])

@@ -1,26 +1,38 @@
-<h3><%= @restaurant.restaurant_name %> 店舗情報</h3>
-<p><%= @restaurant.access %></p>
-<p><%= @restaurant.regular_holiday %></p>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'customer/users/side_ber' %>
+    </div>
+    <div class="col-xs-9">
+		<h3><%= @restaurant.restaurant_name %></h3>
 
-<%= attachment_image_tag @restaurant, :restaurant_top_image, :fill, fallback: "no_image.jpg" %>
+		<p><%= @restaurant.access %></p>
+		<p><%= @restaurant.regular_holiday %></p>
+
+		<%= attachment_image_tag @restaurant, :restaurant_top_image, :fill, fallback: "no_image.jpg" %>
 
 
-<h4><%= @restaurant.introduce_title %></h4>
-<p><%= @restaurant.introduce_body %></p>
+		<h4><%= @restaurant.introduce_title %></h4>
+		<p><%= @restaurant.introduce_body %></p>
 
-<h4>メニューは<%= link_to 'こちら', customer_restaurant_menus_path(@restaurant)%></h4>
+		<h4>メニューは<%= link_to 'こちら', customer_restaurant_menus_path(@restaurant)%></h4>
 
-<h4>お店のこだわり</h4>
-<% @restaurant_images.each do |restaurant_image| %>
-	<%= attachment_image_tag restaurant_image, :restaurant_image, :fill, fallback: "no_image.jpg" %>
-	<%= restaurant_image.restaurant_image_title %>
-<% end %>
+		<h4>お店のこだわり</h4>
+		<% @restaurant_images.each do |restaurant_image| %>
+			<%= attachment_image_tag restaurant_image, :restaurant_image, :fill, fallback: "no_image.jpg" %>
+			<%= restaurant_image.restaurant_image_title %>
+		<% end %>
 
-<h4>投稿写真</h4>
-<% @user_post_images.each do |user_post_image| %>
-	<%= attachment_image_tag user_post_image, :user_post_image, :fill, fallback: "no_image.jpg" %>
-<% end %>
-<p><%= link_to "このお店の写真を投稿する", new_customer_restaurant_user_post_image_path(@restaurant) %></p>
+		<h4>投稿写真</h4>
+		<% @user_post_images.each do |user_post_image| %>
+			<%= attachment_image_tag user_post_image, :user_post_image, :fill, fallback: "no_image.jpg" %>
+		<% end %>
+		<p><%= link_to "このお店の写真を投稿する", new_customer_restaurant_user_post_image_path(@restaurant) %></p>
 
-<p><%= link_to "戻る", :back %></p>
+		<p><%= link_to "戻る", :back %></p>
+
+    </div>
+  </div>
+</div>
+
 

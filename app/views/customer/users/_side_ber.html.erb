@@ -1,0 +1,19 @@
+<h3>ユーザーメニュー</h3>
+	<h4>フォロー</h4>
+	<ul class="list-group">
+		<%= link_to 'フォローしているお店', customer_follower_index_path(current_user), class:"list-group-item" %>
+		<%= link_to 'タイムライン', customer_posts_path, class:"list-group-item" %>
+	</ul>
+	<h4>レストラン検索</h4>
+	<ul class="list-group">
+		<%= link_to 'レストランを検索する', customer_restaurants_path, class:"list-group-item" %>
+	</ul>
+	<h4>ユーザー投稿写真</h4>
+	<ul class="list-group">
+		<%= link_to '投稿写真一覧', customer_restaurant_user_post_images_path(current_user), class:"list-group-item" %>
+	</ul>
+	<h4>マイページ</h4>
+	<ul class="list-group">
+		<%= link_to 'ユーザー情報を見る', customer_user_path(current_user), class:"list-group-item" %>
+		<%= link_to 'ユーザー情報を編集する', edit_user_registration_path, class:"list-group-item" %>
+	</ul>

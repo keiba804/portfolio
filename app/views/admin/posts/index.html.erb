@@ -19,8 +19,8 @@
               <tr>
                 <td><%= post.updated_at.strftime('%Y/%m/%d') %></td>
                 <td><%= link_to  admin_post_path(post) do %><%= post.post_title %><% end %></td>
-                <td><%= link_to '編集', edit_admin_post_path(post) %></td>
-                <td><%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+                <td><%= link_to '編集', edit_admin_post_path(post), class: "btn btn-md btn-primary form-control" %></td>
+                <td><%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-md btn-danger form-control" %></td>
               </tr>
             <% end %>
           </tbody>

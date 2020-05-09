@@ -1,6 +1,6 @@
 class Admin::RestaurantImagesController < ApplicationController
 	def index
-		@restaurant_images = current_restaurant.restaurant_images
+		@restaurant_images = current_restaurant.restaurant_images.order("RANDOM()").limit(4)
 		@user_post_images= current_restaurant.user_post_images
 	end
 	def new

@@ -18,10 +18,10 @@ class Customer::UserPostImagesController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant_id])
     @user_post_image.restaurant_id = restaurant.id
 	if @user_post_image.save
-	    	redirect_to customer_restaurant_restaurant_images_path(restaurant), notice: "店舗写真を追加しました！"
-	    else
-	    	render :new
-    	end
+    	redirect_to customer_restaurant_restaurant_images_path(restaurant), notice: "店舗写真を追加しました！"
+    else
+    	render :new
+	end
   end
 
   def update

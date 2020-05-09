@@ -1,2 +1,14 @@
-<h2>ユーザートップページ</h2>
-<p><%= link_to 'フォローしているお店', customer_follower_index_path(current_user) %></p>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'customer/users/side_ber' %>
+    </div>
+    <div class="col-xs-9">
+
+		<h2>ユーザートップページ</h2>
+		<p><%= link_to 'フォローしているお店', customer_follower_index_path(current_user) %></p>
+
+    </div>
+  </div>
+</div>
+

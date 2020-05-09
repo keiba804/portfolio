@@ -10,11 +10,10 @@ class Customer::PostsController < ApplicationController
 			@posts.sort_by{|post| post.created_at}
 			if @posts.nil?
 				flash[:notice]="まだ投稿がありません…"
-				redirect_to("/")
 			end
 		else
 			flash[:notice]="誰かをフォローしてみましょう！"
-			redirect_to("/")
+			redirect_to customer_user_top_path
 		end
 	end
 	def show

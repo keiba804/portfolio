@@ -1,27 +1,35 @@
-<h2>フォローしている店舗の新着情報</h2>
-<% if @restaurants.present? %>
-	<table class = "table">
-		<thead>
-			<tr>
-				<th>店名</th>
-				<th>件名</th>
-			</tr>
-		</thead>
-		<tbody>
-		<% @posts.each do |post| %>
-			<tr>
-				<th>
-					<%= link_to customer_restaurant_path(post.restaurant) do %>
-						<%= post.restaurant.restaurant_name %>
-					<% end %>
-				</th>
-				<th>
-					<%= link_to customer_post_path(post) do %>
-						<%= post.post_title %>
-					<% end %>
-				</th>
-			</tr>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'customer/users/side_ber' %>
+    </div>
+    <div class="col-xs-9">
+    	<h2>フォローしている店舗の新着情報</h2>
+		<% if @restaurants.present? %>
+	        <table class = "table">
+				<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th></th>
+					<th></th>
+				</tr>
+				</thead>
+				<tbody>
+				<% @posts.each do |post| %>
+					<tr>
+						<td><%= post.updated_at.strftime('%Y/%m/%d') %></td>
+						<td><%= link_to  admin_post_path(post) do %><%= post.post_title %><% end %></td>
+						<td></td>
+						<td></td>
+					</tr>
+				<% end %>
+				</tbody>
+	        </table>
 		<% end %>
-		</tbody>
-	</table>
-<% end %>
+
+
+    </div>
+  </div>
+</div>
+

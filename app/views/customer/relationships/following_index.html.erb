@@ -1,29 +1,41 @@
-<h2>フォローしているお店</h2>
-<% if @restaurants.present? %>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>店名</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'customer/users/side_ber' %>
+    </div>
+    <div class="col-xs-9">
+    	<h2>フォローしているお店</h2>
+		<% if current_user.following_user.present? %>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>店名</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
 
-		<tbody>
-			<% @restaurants.each do |restaurant| %>
-			<tr>
-				<td><%= restaurant.restaurant_name %></td>
-				<td><%= link_to "Show", customer_restaurant_path(restaurant) %></td>
-				<td><% if current_user.following?(restaurant) %>
-				       <%= link_to 'unfollow', customer_unfollow_path(restaurant), method: :DESTROY %>
-				     <% else %>
-				       <%= link_to 'follow', customer_follow_path(restaurant), method: :POST %>
-				     <% end %>
-    			</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-<% else %>
-	<h4>フォローしているお店はありません</h4>
-<% end %>
+				<tbody>
+					<% current_user.following_user.each do |restaurant| %>
+					<tr>
+						<td><%= link_to restaurant.restaurant_name, customer_restaurant_path(restaurant) %></td>
+						<td><%= restaurant.introduce_title %></td>
+						<td><%= restaurant.restaurant_status %></td>
+						<td><% if current_user.following?(restaurant) %>
+						       <%= link_to 'unfollow', customer_unfollow_path(restaurant), method: :DESTROY, class: "btn btn-md btn-danger" %>
+						     <% else %>
+						       <%= link_to 'follow', customer_follow_path(restaurant), method: :POST, class: "btn btn-md btn-primary" %>
+						     <% end %>
+		    			</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h4>フォローしているお店はありません</h4>
+		<% end %>
+    </div>
+  </div>
+</div>
+

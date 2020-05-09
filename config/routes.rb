@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   		resources :menus, only: [:index] do
   			resource :favorites, only: [:create, :destroy]
   		end
-  		resources :user_post_images, only: [:new, :create, :destroy]
+  		resources :user_post_images, only: [:new, :create, :destroy, :index]
   	end
   	resources :users, only: [:show]
   	resources :posts, only: [:index, :show]
