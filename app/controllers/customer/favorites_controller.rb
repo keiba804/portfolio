@@ -1,4 +1,5 @@
 class Customer::FavoritesController < ApplicationController
+    before_action :authenticate_user!
     before_action :menu_params
 	def create
         menu = Menu.find(params[:menu_id])

@@ -1,8 +1,10 @@
 class Admin::MenuCategoriesController < ApplicationController
+	before_action :authenticate_restaurant!
 
 	def index
 		@menu_category = MenuCategory.new
 		@menu_categories = current_restaurant.menu_categories
+		puts @menu_categories[0]
 	end
 
 	def create

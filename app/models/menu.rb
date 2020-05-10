@@ -9,5 +9,7 @@ class Menu < ApplicationRecord
 	enum sales_status:{ 販売中: 0, 売切: 1}
 	enum takeout:{ 可能: 0, 不可: 1}
 
-
+	validates :price, presence: true
+	validates :menu_name, presence: true
+	validates :sales_status, presence: true
 end

@@ -4,33 +4,169 @@
       <%= render 'customer/users/side_ber' %>
     </div>
     <div class="col-xs-9">
-		<h3><%= @restaurant.restaurant_name %></h3>
+    		<div>
+				<h3><%= attachment_image_tag(@restaurant, :restaurant_top_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50') %>  <%= @restaurant.restaurant_name %></h3>
 
-		<p><%= @restaurant.access %></p>
-		<p><%= @restaurant.regular_holiday %></p>
+				<p><%= @restaurant.access %></p>
+				<p><%= @restaurant.regular_holiday %></p>
+			</div>
+		<div class="border-top" style="padding:10px;">
+			<h4><%= @restaurant.introduce_title %></h4>
+			<p><%= @restaurant.introduce_body %></p>
+		</div>
+		<div class="border-top" style="padding:10px;">
+			<h4>メニューは<%= link_to 'こちら', customer_restaurant_menus_path(@restaurant)%></h4>
+		</div>
+		<div class="border-top" style="padding:10px;">
+			<h4>このお店のお知らせは<%= link_to 'こちら', customer_restaurant_post_path(@restaurant)%></h4>
+		</div>
 
-		<%= attachment_image_tag @restaurant, :restaurant_top_image, :fill, fallback: "no_image.jpg" %>
-
-
-		<h4><%= @restaurant.introduce_title %></h4>
-		<p><%= @restaurant.introduce_body %></p>
-
-		<h4>メニューは<%= link_to 'こちら', customer_restaurant_menus_path(@restaurant)%></h4>
-
-		<h4>お店のこだわり</h4>
-		<% @restaurant_images.each do |restaurant_image| %>
-			<%= attachment_image_tag restaurant_image, :restaurant_image, :fill, fallback: "no_image.jpg" %>
-			<%= restaurant_image.restaurant_image_title %>
-		<% end %>
-
-		<h4>投稿写真</h4>
-		<% @user_post_images.each do |user_post_image| %>
-			<%= attachment_image_tag user_post_image, :user_post_image, :fill, fallback: "no_image.jpg" %>
-		<% end %>
+		<div class="row">
+            <h4>お店の投稿写真</h4>
+            <% @restaurant_images.each do |restaurant_image| %>
+                <div class="col-xs-2">
+                    <div>
+                        <%= link_to customer_restaurant_restaurant_image_path(restaurant_image) do %>
+                        	<%= attachment_image_tag restaurant_image, :restaurant_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div class="row">
+            <h4>ユーザー投稿写真</h4>
+			<% @user_post_images.each do |user_post_image| %>
+                <div class="col-xs-2">
+					<%= attachment_image_tag user_post_image, :user_post_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %>
+                </div>
+            <% end %>
+        </div>
 		<p><%= link_to "このお店の写真を投稿する", new_customer_restaurant_user_post_image_path(@restaurant) %></p>
+		<p><%= link_to "このお店の写真をもっと見る", customer_restaurant_restaurant_images_path(@restaurant) %></p>
+		</div>
+
+		<table class="table table-hover table-inverse">
+  <tbody>
+    <tr>
+      <th>レストラン名</th>
+      <td>
+        <%= @restaurant.restaurant_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td>
+        <%= @restaurant.genre %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗電話番号</th>
+      <td>
+        <%= @restaurant.restaurant_phone_number %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗住所</th>
+      <td>
+        <%= @map_address %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗地図</th>
+      <td>
+        <div class="col-xs-6" style="margin-bottom: 30px">
+          <div id='map' class="<%= @map_address %>"></div>
+          <style>
+            #map{
+              height: 400px;
+              width: 400px;
+            }
+          </style>
+
+          <script>
+          /*
+          mapを関数の外で定義(codeAddressでも使うため)
+          geocoderを用意
+          */
+
+          let map
+          let geocoder
+
+          function initMap(){
+            // geocoderを初期化
+            geocoder = new google.maps.Geocoder()
+            geocoder.geocode( { 'address': $('#map').attr('class')}, function(results, status) {
+              if (status == 'OK') {
+          　　　　// map.setCenterで地図が移動
+                map.setCenter(results[0].geometry.location);
+
+          　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 16
+            });
+          }
+
+          function codeAddress(){
+            // 入力を取得
+            let inputAddress = document.getElementById('address').value;
+
+            // geocodingしたあとmapを移動
+          }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗アクセス</th>
+      <td>
+        <%= simple_format(@restaurant.access) %>
+      </td>
+    </tr>
+    <tr>
+      <th>休業日・営業時間</th>
+      <td>
+        <%= simple_format(@restaurant.regular_holiday) %>
+      </td>
+    </tr>
+    <tr>
+      <th>チャージ・お通し・席料等</th>
+      <td>
+        <%= simple_format(@restaurant.charge) %>
+      </td>
+    </tr>
+    <tr>
+      <th>対応支払い方法</th>
+      <td>
+        <%= simple_format(@restaurant.payment) %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗紹介タイトル</th>
+      <td>
+        <%= @restaurant.introduce_title %>
+      </td>
+    </tr>
+    <tr>
+      <th>店舗紹介本文</th>
+      <td>
+        <%= simple_format(@restaurant.introduce_body) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 		<p><%= link_to "戻る", :back %></p>
-
     </div>
   </div>
 </div>

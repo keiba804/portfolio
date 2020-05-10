@@ -1,6 +1,7 @@
 class Admin::RestaurantsController < ApplicationController
+		before_action :authenticate_restaurant!
 	def top
-		@posts = current_restaurant.posts
+		@posts = current_restaurant.posts.order(created_at: :desc).first(5)
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])

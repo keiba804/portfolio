@@ -1,4 +1,5 @@
 class Admin::MenusController < ApplicationController
+    before_action :authenticate_restaurant!
   # before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   # GET /menus

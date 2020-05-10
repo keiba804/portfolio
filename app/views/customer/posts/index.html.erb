@@ -10,7 +10,7 @@
 				<thead>
 				<tr>
 					<th></th>
-					<th>Title</th>
+					<th></th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -19,7 +19,8 @@
 				<% @posts.each do |post| %>
 					<tr>
 						<td><%= post.updated_at.strftime('%Y/%m/%d') %></td>
-						<td><%= link_to  admin_post_path(post) do %><%= post.post_title %><% end %></td>
+						<td><%= post.restaurant.restaurant_name %></td>
+						<td><%= link_to  customer_post_path(post) do %><%= post.post_title %><% end %></td>
 						<td></td>
 						<td></td>
 					</tr>

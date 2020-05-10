@@ -1,6 +1,7 @@
 class Admin::RestaurantImagesController < ApplicationController
+		before_action :authenticate_restaurant!
 	def index
-		@restaurant_images = current_restaurant.restaurant_images.order("RANDOM()").limit(4)
+		@restaurant_images = current_restaurant.restaurant_images
 		@user_post_images= current_restaurant.user_post_images
 	end
 	def new
@@ -20,6 +21,10 @@ class Admin::RestaurantImagesController < ApplicationController
 	def edit
 		@restaurant_image = RestaurantImage.find(params[:id])
 	end
+	def show
+		@restaurant_image = RestaurantImage.find(params[:id])
+	end
+
 
 	def update
 		@restaurant_image = RestaurantImage.find(params[:id])

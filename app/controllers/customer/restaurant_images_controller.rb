@@ -1,6 +1,7 @@
 class Customer::RestaurantImagesController < ApplicationController
+	before_action :authenticate_user!
 	def index
-		@restaurant = Restaurant.find([:restaurant_id])
+		@restaurant = Restaurant.find(params[:restaurant_id])
 		@restaurant_images = @restaurant.restaurant_images
 		@user_post_images= @restaurant.user_post_images
 	end
@@ -10,7 +11,8 @@ class Customer::RestaurantImagesController < ApplicationController
 
 	def create
 		@restaurant_image = RestaurantImage.new(restaurant_image_params)
-		@restaurant_image.restaurant_id = current_restaurant.id
+		restaurant = Restaurant.find(params[:restaurant_id])
+		@restaurant_image.restaurant_id = restaurant.id
 	    if @restaurant_image.save
 	    	redirect_to admin_restaurant_images_path, notice: "店舗写真を追加しました！"
 	    else
@@ -30,7 +32,9 @@ class Customer::RestaurantImagesController < ApplicationController
 	      render :edit
 	    end
 	end
-
+	def show
+		@restaurant_image = RestaurantImage.find(params[:id])
+	end
 	def destroy
 	end
 

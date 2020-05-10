@@ -1,4 +1,5 @@
 class Customer::RestaurantsController < ApplicationController
+	before_action :authenticate_user!
 	def index
 		if params[:q] != nil
 			params[:q]['introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_all'] = params[:q]['introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_all'].split(/[\p{blank}\s]+/)
@@ -11,8 +12,13 @@ class Customer::RestaurantsController < ApplicationController
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])
-		@restaurant_images = @restaurant.restaurant_images
-		@user_post_images = @restaurant.user_post_images
+		@map_address = @restaurant.restaurant_adress
+		@restaurant_images = @restaurant.restaurant_images.limit(4)
+		@user_post_images = @restaurant.user_post_images.limit(4)
+	end
+	def post
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		@posts = @restaurant.posts.order(created_at: :desc)
 	end
 
 	private

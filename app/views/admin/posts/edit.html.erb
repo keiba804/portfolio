@@ -6,7 +6,7 @@
     	<%= render 'admin/restaurants/admin_sideber' %>
     </div>
     <div class="col-xs-9">
-		<h1>新着インフォメーション　投稿</h1>
+		<h1>新着インフォメーション 投稿</h1>
 		<%= form_for @post, url: admin_post_path(@post), method: :put, local: true do |form| %>
 		  <% if @post.errors.any? %>
 		    <div id="error_explanation">
@@ -34,7 +34,7 @@
 
 
 		  <div class="actions">
-		    <%= form.submit "投稿", class: "btn btn-md btn-primary form-control" %>
+		    <%= form.submit "更新する", class: "btn btn-md btn-primary form-control" %>
 		  </div>
 		<% end %>
 		<%= link_to 'インフォメーション一覧へ', admin_post_path(@post) %> |

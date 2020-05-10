@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_155442) do
+ActiveRecord::Schema.define(version: 2020_05_10_092628) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_155442) do
     t.integer "restaurant_id"
     t.string "restaurant_image_title"
     t.string "restaurant_image_body"
-    t.integer "restaurant_image_id"
+    t.text "restaurant_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_155442) do
     t.string "payment"
     t.string "introduce_title"
     t.text "introduce_body"
-    t.integer "restaurant_top_image_id"
+    t.text "restaurant_top_image_id"
     t.integer "restaurant_status", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_155442) do
     t.integer "user_id"
     t.integer "restaurant_id"
     t.string "user_image_title"
-    t.integer "user_post_image_id"
+    t.text "user_post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

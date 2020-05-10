@@ -5,10 +5,10 @@
     </div>
     <div class="col-xs-9">
     	<h3><%= @restaurant_image.restaurant_image_title %></h3>
-    	<%= attachment_image_tag(restaurant_image, :restaurant_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120') %>
+    	<%= attachment_image_tag(@restaurant_image, :restaurant_image, :fill, 400, 400, fallback: "no_image.jpg", size:'400x400') %>
 		<%= simple_format(@restaurant_image.restaurant_image_body) %>
-		<%= link_to '画像一覧へ', admin_restaurant_images_path(@restaurant_image) %> |
-		<%= link_to 'TOP', admin_restaurant_top_path %>
     </div>
+    <%= link_to '画像一覧へ', admin_restaurant_images_path(@restaurant_image) %> |
+		<%= link_to 'TOP', admin_restaurant_top_path %>
   </div>
 </div>

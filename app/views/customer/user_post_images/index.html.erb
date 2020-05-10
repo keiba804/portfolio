@@ -5,16 +5,17 @@
     </div>
     <div class="col-xs-9">
     	<div class="row">
-          <h2 class="head">店舗投稿写真一覧</h2>
+          <h2 class="head">ユーザー投稿写真一覧</h2>
           <ul class="restaurant-image clearfix">
             <% if @user_post_images.present? %>
 				<% @user_post_images.each do |user_post_image| %>
 					<div class="col-xs-2">
 						<%= attachment_image_tag(user_post_image, :user_post_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120') %>
-						<p><%= user_post_image.user_image_title %></p>
-						<%= link_to '削除', customer_restaurant_user_post_image_path(user_post_image), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-md btn-danger form-control" %>
+						<p><%= user_post_image.restaurant.restaurant_name %></p>
+						<%= link_to '削除', customer_user_post_image_path(user_post_image), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-md btn-danger form-control" %>
 					</div>
 				<% end %>
+				<%= paginate @user_post_images %>
             <% else %>
             	<h4>ユーザー投稿写真はありません。</h4>
             <% end %>

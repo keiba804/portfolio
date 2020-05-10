@@ -1,11 +1,14 @@
 class Customer::UserPostImagesController < ApplicationController
+	before_action :authenticate_user!
+	PER =20
   def index
     user = current_user
-    @user_post_images = user.user_post_images
+    @user_post_images = user.user_post_images.page(params[:page]).per(PER)
   end
 
   def new
     @user_post_image = UserPostImage.new
+    restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def edit
@@ -18,7 +21,7 @@ class Customer::UserPostImagesController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant_id])
     @user_post_image.restaurant_id = restaurant.id
 	if @user_post_image.save
-    	redirect_to customer_restaurant_restaurant_images_path(restaurant), notice: "店舗写真を追加しました！"
+    	redirect_to customer_restaurant_path(restaurant), notice: "店舗写真を追加しました！"
     else
     	render :new
 	end
@@ -32,7 +35,10 @@ class Customer::UserPostImagesController < ApplicationController
   end
 
   def destroy
+  	@user_post_image = UserPostImage.find(params[:id])
     @user_post_image.destroy
+    redirect_to customer_user_post_images_path(current_user)
+
   end
 
   private
@@ -43,6 +49,6 @@ class Customer::UserPostImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_post_image_params
-      params.require(:user_post_image).permit(:user_id, :restaurant_id, :user_image_title, :user_post_image_id)
+      params.require(:user_post_image).permit(:user_id, :restaurant_id, :user_image_title, :user_post_image)
     end
 end

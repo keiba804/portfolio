@@ -1,0 +1,31 @@
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-3 side-ber">
+      <%= render 'customer/users/side_ber' %>
+    </div>
+    <div class="col-xs-9">
+    	<h2><%= @restaurant.restaurant_name %>のお知らせ</h2>
+		
+        <table class = "table">
+			<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<% @posts.each do |post| %>
+				<tr>
+					<td><%= post.updated_at.strftime('%Y/%m/%d') %></td>
+					<td><%= link_to customer_post_path(post) do %><%= post.post_title %><% end %></td>
+					<td></td>
+					<td></td>
+				</tr>
+			<% end %>
+			</tbody>
+        </table>
+    </div>
+  </div>
+</div>

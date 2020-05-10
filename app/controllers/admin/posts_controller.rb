@@ -1,10 +1,11 @@
 class Admin::PostsController < ApplicationController
+    before_action :authenticate_restaurant!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  PER = 5
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_restaurant.posts
+    @posts = current_restaurant.posts.order(created_at: :desc).page(params[:page]).per(PER)
   end
 
   # GET /posts/1
