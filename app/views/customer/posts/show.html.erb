@@ -4,8 +4,12 @@
     	<%= render 'customer/users/side_ber' %>
     </div>
     <div class="col-xs-9">
+    	(<%= @post.updated_at.strftime('%Y/%m/%d') %>)
+    	<h2><%= @post.restaurant.restaurant_name %>からのお知らせ</h2>
     	<h3><%= @post.post_title %></h3>
-			<%= simple_format(@post.post_body) %>
+    	<p><%= @post.updated_at.strftime('%Y/%m/%d') %></p>
+
+		<%= simple_format(@post.post_body) %>
 		<%= link_to 'インフォメーション一覧へ', admin_post_path(@post) %> |
 		<%= link_to '戻る', :back %>
     </div>
