@@ -10,11 +10,11 @@
 
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
-      <nav class="nav navbar-nav navbar-left">
-        <img src="/assets/logo.jpg" width="100" height="50" class="logo">
+      <nav class="nav navbar-nav navbar-left logo">
+        <%= image_tag 'logo.jpg', :size => '100x50' %>
       </nav>
       <nav>
-        <div class="nav navbar-nav navbar-right">
+        <div class="nav navbar-nav navbar-right ">
           <% if user_signed_in? %>
             <li><%= link_to 'トップページへ', customer_user_top_path %></li>
             <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>

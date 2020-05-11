@@ -10,6 +10,12 @@
 			<p><%= @restaurant.access %></p>
 			<p><%= @restaurant.regular_holiday %></p>
 		</div>
+		<span>
+			空席状況: <%= @restaurant.restaurant_status %>
+			<% if @restaurant.restaurant_status != '非公表' %>
+				(<%= l @restaurant.updated_at %>更新)
+			<% end %>
+		</span>
 		<div class="border-top" style="padding:10px;">
 			<h4><%= @restaurant.introduce_title %></h4>
 			<p><%= @restaurant.introduce_body %></p>

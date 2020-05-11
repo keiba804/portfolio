@@ -4,7 +4,7 @@
       <%= render 'customer/users/side_ber' %>
     </div>
     <div class="col-xs-9">
-      <h3>画像投稿フォーム</h3>
+      <h3><%= @restaurant.restaurant_name %>画像投稿フォーム</h3>
       <%= form_for(@user_post_image, url: customer_restaurant_user_post_images_path, method: :post) do |f| %>
         <div class="form-group">
           <div class="image">

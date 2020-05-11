@@ -8,7 +8,7 @@ class Customer::UserPostImagesController < ApplicationController
 
   def new
     @user_post_image = UserPostImage.new
-    restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def edit
