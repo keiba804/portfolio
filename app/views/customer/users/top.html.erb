@@ -5,9 +5,12 @@
     </div>
     <div class="col-xs-9">
 
-		<h2>ユーザートップページ</h2>
+		<h2>ようこそ<%= current_user.nickname %>さん！</h2>
+		<h3>今日行くお店を決めましょう！</h3>
 		<p><%= link_to 'フォローしているお店', customer_follower_index_path(current_user) %></p>
 
+		<h3>それとも新たなお店を探しますか？</h3>
+		<p><%= link_to 'お店をさがす', customer_restaurants_path %></p>
     </div>
   </div>
 </div>

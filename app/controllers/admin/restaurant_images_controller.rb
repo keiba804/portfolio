@@ -28,7 +28,7 @@ class Admin::RestaurantImagesController < ApplicationController
 
 	def update
 		@restaurant_image = RestaurantImage.find(params[:id])
-	    if @restaurant_image.update(menu_category_params)
+	    if @restaurant_image.update(restaurant_image_params)
 	      redirect_to admin_restaurant_images_path, notice: "店舗写真を編集しました！"
 	    else
 	      render :edit
@@ -36,11 +36,14 @@ class Admin::RestaurantImagesController < ApplicationController
 	end
 
 	def destroy
+		@restaurant_image = RestaurantImage.find(params[:id])
+	    @restaurant_image.update(restaurant_image_params)
+	    redirect_to admin_restaurant_images_path, notice: "店舗写真を削除しました！"
 	end
 
 	private
 
 	def restaurant_image_params
-	params.require(:restaurant_image).permit(:restaurant_image_title, :restaurant_image_body, :restaurant_image, :restaurant_id)
+	params.permit(:restaurant_image_title, :restaurant_image_body, :restaurant_image, :restaurant_id)
 	end
 end

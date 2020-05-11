@@ -13,13 +13,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	get 'restaurant/top' => 'restaurants#top'
-  	resources :seat_availabilities, only: [:update, :create, :new, :edit]
-  	resources :menu_categories, only: [:index, :create, :edit, :update, :destroy]
+  	resources :menu_categories, only: [:index, :create, :update, :destroy]
   	resources :menus, only: [:index, :create, :edit, :update, :destroy, :new]
   	resources :posts
-  	resources :restaurants, only: [:show, :update, :edit, :update]
+  	resources :restaurants, only: [:show, :update, :edit]
   	resources :restaurant_images
-  	resources :genres, only: [:index, :create, :destroy]
   end
 
   namespace :customer do

@@ -1,14 +1,13 @@
 class Customer::PostsController < ApplicationController
-	before_action :authenticate_user!
 	def index
 		@restaurants = current_user.following_user
 		@posts = []
 		if @restaurants.present?
 			@restaurants.each do |restaurant|
-				restaurant.posts = Post.where(restaurant_id: restaurant.id).order(created_at: :desc)
+				restaurant.posts = Post.where(restaurant_id: restaurant.id)
 				@posts.concat(restaurant.posts)
 			end
-			@posts.sort_by{|post| post.created_at}
+			@posts.sort_by{|post| post.created_at}.reverse
 			if @posts.nil?
 				flash[:notice]="まだ投稿がありません…"
 			end

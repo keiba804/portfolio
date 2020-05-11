@@ -88,3 +88,8 @@ gem 'devise-i18n-views'
 gem 'jquery-ui-rails'
 
 gem 'ranked-model'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

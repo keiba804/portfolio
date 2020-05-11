@@ -10,13 +10,13 @@
 		<%= link_to '店舗インフォメーション 一覧', admin_posts_path, class:"list-group-item" %>
 		<%= link_to '店舗インフォメーション 投稿', new_admin_post_path, class:"list-group-item" %>
 	</ul>
-	<h4>店舗詳細情報</h4>
-	<ul class="list-group">
-		<%= link_to '店舗詳細情報 確認', admin_restaurant_path(current_restaurant), class:"list-group-item" %>
-		<%= link_to '店舗詳細情報 編集', edit_restaurant_registration_path, class:"list-group-item" %>
-	</ul>
 	<h4>店舗投稿写真</h4>
 	<ul class="list-group">
 		<%= link_to '店舗投稿写真 確認', admin_restaurant_images_path, class:"list-group-item" %>
 		<%= link_to '店舗投稿写真 投稿', new_admin_restaurant_image_path, class:"list-group-item" %>
+	</ul>
+	<h4>店舗詳細情報</h4>
+	<ul class="list-group">
+		<%= link_to '店舗詳細情報 確認', admin_restaurant_path(current_restaurant), class:"list-group-item" %>
+		<%= link_to '店舗詳細情報 編集', edit_restaurant_registration_path, class:"list-group-item" %>
 	</ul>

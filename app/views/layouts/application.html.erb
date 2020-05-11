@@ -11,31 +11,22 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <nav class="nav navbar-nav navbar-left">
-        <h1 class = "store-name">どこで飲もうかな？</h1>
+        <img src="/assets/logo.jpg" width="100" height="50" class="logo">
       </nav>
       <nav>
         <div class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to 'top', customer_user_top_path %></li>
-            <li><%= link_to '投稿一覧', customer_posts_path %></li>
-            <li><%= link_to ' マイページ', customer_user_path(current_user) %></li>
-            <li><%= link_to ' レストラン一覧', customer_restaurants_path %></li>
+            <li><%= link_to 'トップページへ', customer_user_top_path %></li>
             <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %></li>
           <% elsif restaurant_signed_in? %>
-            <li><%= link_to 'top', admin_restaurant_top_path %></li>
-            <li><%= link_to ' 店舗情報詳細', admin_restaurant_path(current_restaurant) %></li>
-            <li><%= link_to ' メニュー一覧', admin_menus_path %></li>
-            <li><%= link_to ' 店舗投稿一覧', admin_posts_path %></li>
-            <li><%= link_to ' 写真一覧', admin_restaurant_images_path %></li>
-            <li><%= link_to ' ジャンル管理', admin_menu_categories_path %></li>
+            <li><%= link_to 'トップページへ', admin_restaurant_top_path %></li>
             <li><%= link_to ' ログアウト', destroy_restaurant_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to ' このサイトについて', '#' %></li>
-            <li><%= link_to ' 商品一覧', '#' %></li>
+            <li><%= link_to ' このサイトについて', root_path %></li>
             <li><%= link_to ' ユーザー新規登録', new_user_registration_path %></li>
-            <li><%= link_to ' レストラン新規登録', new_restaurant_registration_path %></li>
             <li><%= link_to ' ユーザーログイン', user_session_path %></li>
-            <li><%= link_to ' レストランログイン', restaurant_session_path %></li>
+            <li><%= link_to ' 店舗管理者新規登録', new_restaurant_registration_path %></li>
+            <li><%= link_to ' 店舗管理者ログイン', restaurant_session_path %></li>
             <% end %>
         </div>
       </nav>

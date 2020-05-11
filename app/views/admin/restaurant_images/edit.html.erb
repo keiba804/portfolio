@@ -4,35 +4,34 @@
 			<%= render 'admin/restaurants/admin_sideber' %>
     	</div>
 		<div class="col-xs-9">
-				<div class="row">
-					<h3>画像投稿フォーム</h3>
-					<% if @restaurant_image.errors.any? %>
-					    <%= @restaurant_image.errors.count %>件のエラーが発生しました
-					    <% @restaurant_image.errors.full_messages.each do |message| %>
-					        <%= message %>
-					    <% end %>
+			<div class="row">
+				<h3>画像投稿フォーム</h3>
+				<% if @restaurant_image.errors.any? %>
+					<%= @restaurant_image.errors.count %>件のエラーが発生しました
+						<% @restaurant_image.errors.full_messages.each do |message| %>
+					<%= message %>
 					<% end %>
+				<% end %>
 
-					<%= form_for(@restaurant_image, url: admin_restaurant_image_path, method: :put) do |f| %>
-						<div class="form-group">
-							<div class="image">
-							    <%= attachment_image_tag @restaurant_image, :restaurant_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-							</div>
-						    <%= f.attachment_field :restaurant_image, placeholder: "レストラン投稿画像" %>
+				<%= form_for(@restaurant_image, url: admin_restaurant_image_path, method: :put) do |f| %>
+					<div class="form-group">
+						<div class="image">
+							<%= attachment_image_tag @restaurant_image, :restaurant_image, :fill, 60, 60, fallback: "no_image.jpg"%>
 						</div>
-						<div class="form-group">
-							<%= f.label :restaurant_image_title, 'タイトル' %>
-							<%= f.text_field :restaurant_image_title, class:"form-control", placeholder:"タイトル" %>
-						</div>
-						<div class="form-group">
-							<%= f.label :restaurant_image_body, '写真説明' %>
-							<%= f.text_area :restaurant_image_body, class:"form-control", rows:"3", placeholder:"写真説明" %><br>
-						</div>
-						<div class="form-group">
-							<%= f.submit "投稿", class: "btn btn-md btn-primary form-control" %>
-						</div>
-					<% end %>
-				</div>
+						<%= f.attachment_field :restaurant_image, placeholder: "レストラン投稿画像" %>
+					</div>
+					<div class="form-group">
+						<%= f.label :restaurant_image_title, 'タイトル' %>
+						<%= f.text_field :restaurant_image_title, class:"form-control", placeholder:"タイトル" %>
+					</div>
+					<div class="form-group">
+						<%= f.label :restaurant_image_body, '写真説明' %>
+						<%= f.text_area :restaurant_image_body, class:"form-control", rows:"3", placeholder:"写真説明" %><br>
+					</div>
+					<div class="form-group">
+						<%= f.submit "投稿", class: "btn btn-md btn-primary form-control" %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>

@@ -5,7 +5,6 @@ class User < ApplicationRecord
 	has_many :user_post_images, dependent: :destroy
 	has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
 	has_many :following_user, through: :follower, source: :followed
-	has_many :contact, dependent: :destroy
 
 	def follow(user_id)
 	  follower.create(followed_id: user_id)
