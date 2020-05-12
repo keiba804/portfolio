@@ -8,7 +8,7 @@
 			<h3><%= attachment_image_tag(@restaurant, :restaurant_top_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50') %>  <%= @restaurant.restaurant_name %></h3>
 
 			<p><%= @restaurant.access %></p>
-			<p><%= @restaurant.regular_holiday %></p>
+			<p><%= simple_format(@restaurant.regular_holiday) %></p>
 		</div>
 		<span>
 			空席状況: <%= @restaurant.restaurant_status %>

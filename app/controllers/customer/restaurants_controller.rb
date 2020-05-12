@@ -2,7 +2,7 @@ class Customer::RestaurantsController < ApplicationController
 	before_action :authenticate_user!
 	def index
 		if params[:q] != nil
-			params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_all'] = params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_all'].split(/[\p{blank}\s]+/)
+			params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'] = params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'].split(/[\p{blank}\s]+/)
 			@search = Restaurant.ransack(params[:q])
 			@restaurants = @search.result
 		else

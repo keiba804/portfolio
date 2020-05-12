@@ -20,3 +20,7 @@
 		<%= link_to '店舗詳細情報 確認', admin_restaurant_path(current_restaurant), class:"list-group-item" %>
 		<%= link_to '店舗詳細情報 編集', edit_restaurant_registration_path, class:"list-group-item" %>
 	</ul>
+
+	<ul class="list-group">
+		<%= link_to ' ログアウト', destroy_restaurant_session_path, method: :delete, class:"list-group-item" %>
+	</ul>

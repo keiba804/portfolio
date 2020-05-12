@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
   namespace :customer do
   	resources :restaurants, only: [:index, :show] do
-  		resources :menu_categories, only: [:index]
   		resources :restaurant_images, only: [:index, :show]
   		resources :menus, only: [:index] do
   			resource :favorites, only: [:create, :destroy]

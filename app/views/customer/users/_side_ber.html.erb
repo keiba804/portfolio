@@ -6,7 +6,7 @@
 	</ul>
 	<h4>レストラン検索</h4>
 	<ul class="list-group">
-		<%= link_to 'レストランを検索する', customer_restaurants_path, class:"list-group-item" %>
+		<%= link_to 'レストランを探す', customer_restaurants_path, class:"list-group-item" %>
 	</ul>
 	<h4>ユーザー投稿写真</h4>
 	<ul class="list-group">
@@ -17,3 +17,9 @@
 		<%= link_to 'ユーザー情報を見る', customer_user_path(current_user), class:"list-group-item" %>
 		<%= link_to 'ユーザー情報を編集する', edit_user_registration_path, class:"list-group-item" %>
 	</ul>
+
+	<ul class="list-group">
+		<%= link_to ' ログアウトする', destroy_user_session_path, method: :delete, class:"list-group-item" %>
+	</ul>
+
+	

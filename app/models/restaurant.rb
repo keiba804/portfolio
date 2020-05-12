@@ -1,6 +1,4 @@
 class Restaurant < ApplicationRecord
-	has_many :seat_availabilities, dependent: :destroy
-	has_many :genres, dependent: :destroy
 	has_many :menus, dependent: :destroy
 	has_many :restaurant_images, dependent: :destroy
 	has_many :posts, dependent: :destroy
