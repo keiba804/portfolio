@@ -2,9 +2,14 @@ class Customer::RestaurantsController < ApplicationController
 	before_action :authenticate_user!
 	def index
 		if params[:q] != nil
-			params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'] = params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'].split(/[\p{blank}\s]+/)
-			@search = Restaurant.ransack(params[:q])
+			@key_words = params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont'].split(/[\p{blank}\s]+/) 
+			grouping_hash = @key_words.reduce({}){|hash, word| hash.merge(word => { genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont: word })}
+			@search = Restaurant.ransack({ combinator: 'and', groupings: grouping_hash })
 			@restaurants = @search.result
+		
+			# params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'] = params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'].split(/[\p{blank}\s]+/)
+			# @search = Restaurant.ransack(params[:q])
+			# @restaurants = @search.result
 		else
 			@search = Restaurant.ransack(params[:q])
 			@restaurants = @search.result

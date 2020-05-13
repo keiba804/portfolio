@@ -18,7 +18,7 @@
 		</span>
 		<div class="border-top" style="padding:10px;">
 			<h4><%= @restaurant.introduce_title %></h4>
-			<p><%= @restaurant.introduce_body %></p>
+			<p><%= simple_format(@restaurant.introduce_body) %></p>
 		</div>
 		<div class="border-top" style="padding:10px;">
 			<h4>メニューは<%= link_to 'こちら', customer_restaurant_menus_path(@restaurant)%></h4>

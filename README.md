@@ -1,4 +1,4 @@
-# アプリ名未定
+# アプリ名:どこで飲もうかな？
 
 
 ## サイト概要
@@ -20,7 +20,7 @@
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1bUH6DhtFSBc5PdI5dRTtlbNCFo-TmfVIPbexYhyYY1I/edit?usp=sharing
-※実装する機能の候補が多いので画面設計やアプリケーション設計しながらいらない機能を消していく
+
 
 
 
