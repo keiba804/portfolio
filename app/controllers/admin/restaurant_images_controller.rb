@@ -44,6 +44,6 @@ class Admin::RestaurantImagesController < ApplicationController
 	private
 
 	def restaurant_image_params
-	params.permit(:restaurant_image_title, :restaurant_image_body, :restaurant_image, :restaurant_id)
+	params.require(:restaurant_image).permit(:restaurant_image_title, :restaurant_image_body, :restaurant_image, :restaurant_id)
 	end
 end
