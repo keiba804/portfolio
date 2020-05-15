@@ -5,7 +5,8 @@
     </div>
     <div class="col-xs-9">
       <h1>店舗インフォメーション 一覧</h1>
-      <% if @posts.nil %>
+      <% if @posts.nil? %>
+      投稿はまだありません
       <% else %>
         <table class = "table">
           <thead>
