@@ -4,6 +4,8 @@
     	<%= render 'admin/restaurants/admin_sideber' %>
     </div>
     <div class="col-xs-9">
+    	<h2><%= @post.restaurant.restaurant_name %>からのお知らせ</h2>
+    	(<%= @post.updated_at.strftime('%Y/%m/%d') %>)
     	<h3><%= @post.post_title %></h3>
 			<%= simple_format(@post.post_body) %>
 		<%= link_to 'インフォメーション一覧へ', admin_post_path(@post) %> |
