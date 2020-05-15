@@ -28,15 +28,11 @@ class Admin::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.restaurant_id = current_restaurant.id
 
-    respond_to do |format|
       if @post.save
-        format.html { redirect_to admin_post_path(@post), notice: 'インフォメーションを作成しました.' }
-        format.json { render :show, status: :created, location: @post }
+        redirect_to admin_post_path(@post), notice: 'インフォメーションを作成しました.' 
       else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /posts/1
