@@ -5,10 +5,8 @@
     </div>
     <div class="col-xs-9">
       <h1>店舗インフォメーション 一覧</h1>
-      <% if @posts.nil? %>
-      投稿はまだありません
-      <% else %>
-        <table class = "table">
+      <% if @posts.present? %>
+      <table class = "table">
           <thead>
             <tr>
               <th></th>
@@ -30,6 +28,8 @@
           <br>
         </table>
         <%= paginate @posts %>
+      <% else %>
+        投稿はまだありません<br>
       <% end %>
       <%= link_to 'インフォメーションを投稿をする', new_admin_post_path %>
     </div>
