@@ -15,9 +15,6 @@
 
 					<%= form_for(@restaurant_image, url: admin_restaurant_images_path, method: :post) do |f| %>
 						<div class="form-group">
-							<div class="image">
-							    <%= attachment_image_tag @restaurant_image, :restaurant_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-							</div>
 						    <%= f.attachment_field :restaurant_image, placeholder: "レストラン投稿画像" %>
 						</div>
 						<div class="form-group">
