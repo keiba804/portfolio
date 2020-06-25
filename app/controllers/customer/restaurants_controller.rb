@@ -6,14 +6,13 @@ class Customer::RestaurantsController < ApplicationController
 			grouping_hash = @key_words.reduce({}){|hash, word| hash.merge(word => { genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont: word })}
 			@search = Restaurant.ransack({ combinator: 'and', groupings: grouping_hash })
 			@restaurants = @search.result
-		
 			# params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'] = params[:q]['genre_or_introduce_title_or_introduce_body_or_restaurant_name_or_restaurant_adress_or_access_cont_any'].split(/[\p{blank}\s]+/)
 			# @search = Restaurant.ransack(params[:q])
 			# @restaurants = @search.result
 		else
 			@search = Restaurant.ransack(params[:q])
 			@restaurants = @search.result
-		end  		
+		end
 	end
 	def show
 		@restaurant = Restaurant.find(params[:id])

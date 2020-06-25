@@ -8,7 +8,36 @@
 		<h2>ようこそ<%= current_user.nickname %>さん！</h2>
 		<h3>今日行くお店を決めましょう！</h3>
 		<p><%= link_to 'フォローしているお店', customer_follower_index_path(current_user) %></p>
+		<% if @restaurants.present? %>
+			<h4>スムーズに入れるお店一覧</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th></th>
+							<th>店名</th>
+							<th>空席状況</th>
+							<th></th>
+						</tr>
+					</thead>
 
+					<tbody>
+						<% @restaurants.each do |restaurant| %>
+							<tr>
+								<td><%= attachment_image_tag(restaurant, :restaurant_top_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50') %></td>
+								<td><%= link_to restaurant.restaurant_name, customer_restaurant_path(restaurant) %></td>
+								<td><%= restaurant.restaurant_status %></td>
+								<td>
+									<% if current_user.following?(restaurant) %>
+								       <%= link_to 'フォローを外す', customer_unfollow_path(restaurant), method: :DESTROY, class: "btn btn-xs btn-danger" %>
+								     <% else %>
+								       <%= link_to 'フォローする', customer_follow_path(restaurant), method: :POST, class: "btn btn-xs btn-primary" %>
+								     <% end %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>
 		<h3>それとも新たなお店を探しますか？</h3>
 		<p><%= link_to 'お店をさがす', customer_restaurants_path %></p>
     </div>
