@@ -1,4 +1,4 @@
-<h3>ユーザーメニュー</h3>
+<h3>メニュー</h3>
 	<h4>フォロー</h4>
 	<ul class="list-group">
 		<%= link_to 'フォローしているお店', customer_follower_index_path(current_user), class:"list-group-item" %>
@@ -16,6 +16,10 @@
 	<ul class="list-group">
 		<%= link_to 'ユーザー情報を見る', customer_user_path(current_user), class:"list-group-item" %>
 		<%= link_to 'ユーザー情報を編集する', edit_user_registration_path, class:"list-group-item" %>
+	</ul>
+
+	<ul class="list-group">
+		<%= link_to ' トップページへ', customer_user_top_path, class:"list-group-item" %>
 	</ul>
 
 	<ul class="list-group">
